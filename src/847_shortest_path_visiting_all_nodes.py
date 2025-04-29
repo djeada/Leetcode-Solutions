@@ -52,7 +52,7 @@ class Solution:
                 for neighbour in graph[node]:
                     next_mask = mask | (1 << neighbour)
                     if not visited[neighbour][next_mask]:
-                        visited[nei][next_mask] = True
+                        visited[neighbour][next_mask] = True
                         queue.append((neighbour, next_mask))
             steps += 1
 
