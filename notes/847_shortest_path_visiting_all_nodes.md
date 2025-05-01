@@ -120,10 +120,14 @@ We enqueue initial states:
 
 **Time:**
 
-- There are at most `N·2^N` distinct states.  
-- Each state explores up to `deg(u)` neighbors, so total work is O((N·2^N) + ∑deg(u)·2^N) = O(E·2^N + N·2^N).  
-- For small N (≤12–15), this is feasible; otherwise exponential.
+- There are at most $N \cdot 2^N$ distinct states.  
+- Each state explores up to $deg(u)$ neighbors, so the total function is
+
+  $$\mathcal{O}\bigl(N\cdot 2^N + \sum_u deg(u)\cdot 2^N\bigr)
+    =\mathcal{O}\bigl(E\cdot 2^N + N\cdot 2^N\bigr)$$
+
+- For small $N$ (e.g.\ $N \le 12 – 15$), this is feasible; otherwise exponential.
 
 **Space:**  
 
-- O(N·2^N) for the `visited_states` table and the BFS queue in the worst case.
+- $\mathcal{O}(N \cdot 2^N)$ for the `visited_states` table and the BFS queue in the worst case.
