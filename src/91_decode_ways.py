@@ -27,5 +27,3 @@ class Solution:
                 return 0
 
         return ways_one_back
-
-Solution().numDecodings("226")
