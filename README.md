@@ -6,7 +6,7 @@ All the leetcode problems I have solved.
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/Leetcode-Solutions.git
+git clone https://github.com/djeada/Leetcode-Solutions.git
 ```
 
 2. **Navigate to a language folder**
