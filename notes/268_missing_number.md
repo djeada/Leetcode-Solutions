@@ -8,16 +8,12 @@
 
 * Integer equal to `len(nums)`, representing the count of numbers present (which is one less than the full range length).
 
----
-
 ## Two Approaches in `missingNumber()`
 
 The method offers two interchangeable options:
 
 1. **Arithmetic sequence sum**
 2. **Bitwise XOR**
-
----
 
 ### Option 1: Arithmetic Sequence Sum
 
@@ -44,8 +40,6 @@ return s_n - sum_nums
      \text{missing} = s_n - \text{sum\_nums}
    $$
 4. **Return** the result.
-
----
 
 ### Option 2: Bitwise XOR
 
@@ -83,8 +77,6 @@ flowchart TD
 3. **Return**
 
    * After processing all entries, `x` equals the one number in $[0, n]$ that never got cancelled.
-
----
 
 ## Complexity
 
