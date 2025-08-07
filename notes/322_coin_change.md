@@ -21,17 +21,17 @@ We exploit the **optimal substructure**: the best way to form amount $i$ is to t
 
 ```mermaid
 flowchart TD
-  A[Start: define INF = A+1, dp[0]=0, dp[1…A]=INF] --> B[For i = 1 to A]
-  B --> C[For each coin c in coins]
-  C --> D{if i ≥ c?}
-  D -->|Yes| E[dp[i] ← min(dp[i], dp[i−c] + 1)]
-  D -->|No| F[skip]
-  E --> G{more coins?}
-  G -->|Yes| C
-  G -->|No| H{more i?}
-  H -->|Yes| B
-  H -->|No| I[Return dp[A] unless INF → −1]
-  I --> J[Done]
+    A["Start: define INF = A + 1, dp[0] = 0, dp[1...A] = INF"] --> B["For i = 1 to A"]
+    B --> C["For each coin c in coins"]
+    C --> D{"i ≥ c?"}
+    D -->|Yes| E["dp[i] = min(dp[i], dp[i - c] + 1)"]
+    D -->|No| F["skip"]
+    E --> G{"more coins?"}
+    G -->|Yes| C
+    G -->|No| H{"more i?"}
+    H -->|Yes| B
+    H -->|No| I["Return dp[A] unless INF → -1"]
+    I --> J["Done"]
 ```
 
 ### I. Initialization
