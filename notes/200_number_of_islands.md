@@ -16,15 +16,16 @@ We view the grid as an undirected graph on cells, where each land cell is connec
 
 ```mermaid
 flowchart TD
-  A[Start: if grid empty → return 0] --> B[Set counter = 0]
-  B --> C[For each cell (i,j) in grid]
-  C --> D{grid[i][j] == '1'?}
-  D -->|Yes| E[counter += 1]
-  E --> F[DFS(i,j) to mark whole island]
-  D -->|No| G[continue scan]
-  F & G --> H{more cells?}
-  H -->|Yes| C
-  H -->|No| I[Return counter]
+    A["Start: if grid empty -> return 0"] --> B["Set counter = 0"]
+    B --> C["For each cell (i, j) in grid"]
+    C --> D{"grid[i][j] == '1'?"}
+    D -->|Yes| E["counter += 1"]
+    E --> F["DFS(i, j) to mark whole island"]
+    D -->|No| G["continue scan"]
+    F --> H{"more cells?"}
+    G --> H
+    H -->|Yes| C
+    H -->|No| I["Return counter"]
 ```
 
 **DFS(i,j):**
