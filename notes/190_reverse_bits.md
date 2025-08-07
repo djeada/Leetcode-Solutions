@@ -44,7 +44,7 @@ For each iteration $i$ from 0 up to 31:
 1. **Extract** the current least significant bit:
 
 $$
-\text{bit}_i = n & 1
+\text{bit}_i = n \& 1
 $$
 
 2. **Shift** the accumulator left by one position (equivalent to multiplying by 2):
