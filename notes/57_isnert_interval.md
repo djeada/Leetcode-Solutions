@@ -12,28 +12,26 @@
 * **Overlap group**: intervals that intersect $[s,e]$, used to expand the new interval’s bounds.
 * **Merged interval**: a pair $[\min\!s,\;\max\!e]$ covering all overlaps and the original new interval.
 
----
-
 ## Overall Approach
 
 We partition the existing intervals into three sets—left, overlap, and right—based on their relation to the new interval, then merge overlaps by taking the minimum start and maximum end. Finally, we splice the merged interval between the left and right groups.
 
 ```mermaid
 flowchart TD
-  A[Start: given sorted intervals & newInterval] --> B[Partition intervals]
-  B --> C[Left group: end < newStart]
-  B --> D[Overlap: start ≤ newEnd ∧ end ≥ newStart]
-  B --> E[Right group: start > newEnd]
-  C --> F[Collect into result_list]
-  D --> G[Compute mergedStart = min(all starts)]
-  G --> H[Compute mergedEnd = max(all ends)]
-  H --> I[Append [mergedStart, mergedEnd] to result_list]
-  E --> J[Append right group intervals]
-  F & I & J --> K[Return concatenated list]
-  K --> L[Done]
+    A["Start: given sorted intervals and newInterval"] --> B["Partition intervals"]
+    B --> C["Left group: end < newStart"]
+    B --> D["Overlap: start ≤ newEnd and end ≥ newStart"]
+    B --> E["Right group: start > newEnd"]
+    C --> F["Collect into result_list"]
+    D --> G["Compute mergedStart = min(all starts)"]
+    G --> H["Compute mergedEnd = max(all ends)"]
+    H --> I["Append [mergedStart, mergedEnd] to result_list"]
+    E --> J["Append right group intervals"]
+    F --> K["Return concatenated list"]
+    I --> K
+    J --> K
+    K --> L["Done"]
 ```
-
----
 
 ### I. Initialization
 
@@ -43,8 +41,6 @@ flowchart TD
   $$
     L = \{\},\quad O = \{\},\quad R = \{\}.
   $$
-
----
 
 ### II. Partitioning
 
@@ -73,8 +69,6 @@ Otherwise, set $\text{mergedStart}=s$, $\text{mergedEnd}=e$.
 
 The merged interval is $[\text{mergedStart},\,\text{mergedEnd}]$.
 
----
-
 ### IV. Construct Result
 
 Concatenate in order:
@@ -85,8 +79,6 @@ $$
 
 Because input is sorted and partitions preserve order, the result remains sorted and non-overlapping.
 
----
-
 ## Example
 
 Insert $[2,5]$ into $\bigl[[1,3],\,[6,9]\bigr]$:
@@ -96,8 +88,6 @@ Insert $[2,5]$ into $\bigl[[1,3],\,[6,9]\bigr]$:
 3. **Right**: $\{[6,9]\}$.
 
 Result: $\bigl[[1,5],\,[6,9]\bigr]$.
-
----
 
 ## Complexity
 
