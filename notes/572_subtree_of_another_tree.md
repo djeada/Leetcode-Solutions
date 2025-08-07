@@ -18,18 +18,19 @@ We reduce the problem to two tasks:
 
 ```mermaid
 flowchart TD
-  A[Start at root of T] --> B{root is null?}
-  B -->|Yes| C[Return False]
-  B -->|No| D{isSame(root, subRoot)?}
-  D -->|Yes| E[Return True]
-  D -->|No| F[Recurse on left subtree]
-  F --> G{left yields True?}
-  G -->|Yes| E
-  G -->|No| H[Recurse on right subtree]
-  H --> I{right yields True?}
-  I -->|Yes| E
-  I -->|No| C
-  C & E --> J[Done]
+    A["Start at root of T"] --> B{"root is null?"}
+    B -->|Yes| C["Return False"]
+    B -->|No| D{"isSame(root, subRoot)?"}
+    D -->|Yes| E["Return True"]
+    D -->|No| F["Recurse on left subtree"]
+    F --> G{"left yields True?"}
+    G -->|Yes| E
+    G -->|No| H["Recurse on right subtree"]
+    H --> I{"right yields True?"}
+    I -->|Yes| E
+    I -->|No| C
+    C --> J["Done"]
+    E --> J
 ```
 
 ### I. Helper: `isSame(node, subNode)`
@@ -49,17 +50,16 @@ $$
 
 the predicate “subtrees at $u$ and $v$ are identical,” then
 
-$$
-  \mathrm{Same}(u,v)
-  = 
-  \begin{cases}
-    \text{True}, & u=v=\mathrm{null},\\
-    \text{False},& \text{exactly one is null or }u.\mathrm{val}\neq v.\mathrm{val},\\
-    \mathrm{Same}(u.\mathrm{left},v.\mathrm{left}) 
-     \;\wedge\;
-     \mathrm{Same}(u.\mathrm{right},v.\mathrm{right}), & \text{otherwise.}
-  \end{cases}
-$$
+```mermaid
+flowchart TD
+    A["Same(u, v)"] --> B{"u = null and v = null?"}
+    B -->|Yes| C["True"]
+    B -->|No| D{"u = null or v = null or u.val ≠ v.val?"}
+    D -->|Yes| E["False"]
+    D -->|No| F["Same(u.left, v.left) ∧ Same(u.right, v.right)"]
+    F -->|True| C
+    F -->|False| E
+```
 
 ### II. Main Procedure: `isSubtree(root, subRoot)`
 
@@ -71,15 +71,16 @@ $$
 
 as “tree at node $u$ contains $S$ as a subtree.” Then
 
-$$
-  \mathrm{Sub}(u,S)
-  =
-  \mathrm{Same}(u,S)
-  \;\vee\;
-  \mathrm{Sub}(u.\mathrm{left},S)
-  \;\vee\;
-  \mathrm{Sub}(u.\mathrm{right},S).
-$$
+```mermaid
+flowchart TD
+    A["Sub(u, S)"] --> B{"Same?"}
+    B -->|Yes| C["True"]
+    B -->|No| D["Sub(u.left, S)"]
+    D -->|Yes| C
+    D -->|No| E["Sub(u.right, S)"]
+    E -->|Yes| C
+    E -->|No| F["False"]
+```
 
 At each node $u$ of $T$, we first test $\mathrm{Same}(u,S)$; if that fails, we recursively query the left and right children of $u$.
 
@@ -87,23 +88,22 @@ At each node $u$ of $T$, we first test $\mathrm{Same}(u,S)$; if that fails, we r
 
 Let
 
-$$
-T = 
-\begin{array}{c}
-\;3\\
-/\;\;\backslash\\
-4\;\;\;5\\
-/\;\backslash\\
-1\;\;2
-\end{array}
-\quad
-S=
-\begin{array}{c}
-4\\
-/\;\backslash\\
-1\;\;2
-\end{array}
-$$
+```
+T:
+       3
+      / \
+     4   5
+    / \
+   1   2
+```
+
+```
+S:
+   4
+  / \
+ 1   2
+```
+
 
 * At $u=3$, $\mathrm{Same}(3,S)$ fails (values differ).
 * Recurse to $u=4$: now $\mathrm{Same}(4,S)$ holds, since both structure and values match exactly.
@@ -111,15 +111,17 @@ $$
 
 ## Complexity Analysis
 
-* **Time Complexity:**
-  In the worst case, for each of the $N$ nodes in $T$ we invoke `isSame`, which may explore up to $M$ nodes.
+**Time Complexity:**
+In the worst case, for each of the $N$ nodes in $T$ we invoke `isSame`, which may explore up to $M$ nodes.
 
-  $$
-    O(N\times M).
-  $$
-* **Space Complexity:**
-  Recursion depth is bounded by the height of $T$, say $H$, so
+$$
+O(N\times M)
+$$
 
-  $$
-    O(H).
-  $$
+**Space Complexity:**
+
+Recursion depth is bounded by the height of $T$, say $H$, so
+
+$$
+O(H)
+$$
