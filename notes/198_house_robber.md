@@ -1,62 +1,85 @@
 ## Data Structures
 
-* **`dp`** - Dynamic programming array to store subproblem solutions
+**Inputs:**
 
-## Overall Approach
+* `nums`: sequence of non-negative values $\{a_i\}_{i=0}^{n-1}$.
 
-The problem asks us to find maximum money that can be robbed without robbing adjacent houses.
+**Auxiliary Variables:**
 
-This problem uses **Dynamic Programming** to build up solutions from smaller subproblems.
+* $n$: length of the sequence.
+* $\text{dp}$: array of length $n$, where
 
-The algorithm works by:
+  $$
+    \text{dp}[i] = \max\bigl(\text{total robbable from }a_0\ldots a_i\bigr).
+  $$
+* $i$: index running from $0$ to $n-1$.
 
-1. **Step 1**
-   
-   ```python
-   def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-   ```
-2. **Step 2**
-   
-   ```python
-   if n == 0:
-            return 0
-        if n == 1:
-   ```
+## What Happens in `rob`?
 
-## Complexity Analysis
+We exploit an **optimal substructure**: for each house $i$, the best total up through $i$ is either
 
-* **Time Complexity**: O(n)
-* **Space Complexity**: O(n)
+1. **Skip** house $i$: carry forward the best through $i-1$.
+2. **Rob**   house $i$: take its value $a_i$ plus the best through $i-2$.
 
-## Key Insights
+This yields the recurrence
 
-* The problem exhibits optimal substructure - optimal solution contains optimal solutions to subproblems
-* Memoization avoids redundant calculations
+$$
+  \text{dp}[i] \;=\;\max\bigl(\text{dp}[i-1],\;a_i + \text{dp}[i-2]\bigr).
+$$
 
-## Source Code Analysis
-
-```python
-class Solution:
-    def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-
-        if n == 0:
-            return 0
-        if n == 1:
-            return nums[0]
-
-        dp = [0] * n
-        dp[0] = nums[0]
-        dp[1] = max(nums[0], nums[1])
-
-        for i in range(2, n):
-            dp[i] = max(dp[i-1], nums[i] + dp[i-2])
-
-        return dp[-1]
+```mermaid
+flowchart TD
+    A["Start: compute n, handle n ≤ 1 base cases"] --> B["Initialize dp[0] and dp[1]"]
+    B --> C["For i = 2 to n-1:"]
+    C --> D["compute skip = dp[i-1]"]
+    D --> E["compute take = a_i + dp[i-2]"]
+    E --> F["dp[i] = max(skip, take)"]
+    F --> G{"more i?"}
+    G -->|Yes| C
+    G -->|No| H["Return dp[n-1]"]
+    H --> I["Done"]
 ```
 
-## Related Problems
+### I. Initialization
 
-* Similar problems involving the same algorithmic techniques
-* Problems with related data structures or approaches
+* **Base cases:**
+
+  $$
+    \text{dp}[0] = a_0,\quad
+    \text{dp}[1] = \max(a_0, a_1).
+  $$
+* If $n=0$, answer = 0; if $n=1$, answer = $a_0$.
+
+### II. Recurrence Step
+
+For each $i\in [2,\,n-1]$:
+
+1. **Skip current**:
+   $\text{skip} = \text{dp}[i-1]$.
+2. **Take current**:
+   $\text{take} = a_i + \text{dp}[i-2]$.
+3. **Optimal choice**:
+
+   $$
+     \text{dp}[i] = \max(\text{skip},\,\text{take}).
+   $$
+
+## Example
+
+Let $\{a_i\} = [2,\,7,\,9,\,3,\,1]$. Then
+
+|   $i$  |  0  |  1  |  2  |  3  |  4  |
+| :----: | :-: | :-: | :-: | :-: | :-: |
+|  $a_i$ |  2  |  7  |  9  |  3  |  1  |
+| dp\[i] |  2  |  7  |  11 |  11 |  12 |
+
+* **i=2:** $\max(dp[1]=7,\;9+dp[0]=11)=11$.
+* **i=3:** $\max(11,\;3+7=10)=11$.
+* **i=4:** $\max(11,\;1+11=12)=12$.
+
+Final answer: **12**.
+
+## Complexity
+
+* **Time:** $\displaystyle O(n)$, one pass through the array.
+* **Space:** $\displaystyle O(n)$, for the DP array (can be reduced to $O(1)$ by keeping only two previous values).
