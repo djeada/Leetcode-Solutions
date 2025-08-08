@@ -33,19 +33,19 @@ If any start cell returns true, the word exists.
 
 ```mermaid
 flowchart TD
-  A[For each cell (i,j)] --> B[dfs(i,j,0)]
-  B --> C{k == L?}
-  C -->|Yes| D[Return True]
-  C -->|No| E[Out of bounds or mismatch?]
-  E -->|Yes| F[Return False]
-  E -->|No| G[Mark (i,j) visited]
-  G --> H[Try neighbors: (i±1,j), (i,j±1) with k+1]
-  H --> I{any True?}
-  I -->|Yes| J[Restore cell; Return True]
-  I -->|No| K[Restore cell; Return False]
-  D --> L[Answer True]
-  F --> M[Try next start]
-  K --> M
+    A["For each cell (i, j)"] --> B["dfs(i, j, 0)"]
+    B --> C{"k == L?"}
+    C -->|Yes| D["Return True"]
+    C -->|No| E{"Out of bounds or mismatch?"}
+    E -->|Yes| F["Return False"]
+    E -->|No| G["Mark (i, j) visited"]
+    G --> H["Try neighbors: (i±1, j), (i, j±1) with k + 1"]
+    H --> I{"any True?"}
+    I -->|Yes| J["Restore cell; Return True"]
+    I -->|No| K["Restore cell; Return False"]
+    D --> L["Answer True"]
+    F --> M["Try next start"]
+    K --> M
 ```
 
 ## Invariants & Correctness
