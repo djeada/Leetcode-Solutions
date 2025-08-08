@@ -15,21 +15,21 @@ Minimizing removals is equivalent to **maximizing the number of non-overlapping 
 
 Let intervals be sorted by nondecreasing end $e$. Sweep left→right:
 
-* If the next start $s$ satisfies $s \ge \text{prev\_end}$, **keep** it and set $\text{prev\_end} \leftarrow e$.
+* If the next start $s$ satisfies $s \ge \text{prev\\_end}$, **keep** it and set $\text{prev\\_end} \leftarrow e$.
 * Otherwise, **skip** it (conceptually “remove” it).
 
 The number to remove is $\;n - \text{keep}$.
 
 ```mermaid
 flowchart TD
-  A[Sort intervals by end time] --> B[Initialize prev_end = end of first, keep = 1]
-  B --> C[For each (s,e) in remaining intervals]
-  C --> D{s ≥ prev_end?}
-  D -->|Yes| E[keep += 1; prev_end = e]
-  D -->|No| F[skip (remove) this one]
-  E --> C
-  F --> C
-  C --> G[After loop, answer = n - keep]
+    A["Sort intervals by end time"] --> B["Initialize prev_end = end of first; keep = 1"]
+    B --> C["For each (s, e) in remaining intervals"]
+    C --> D{"s >= prev_end?"}
+    D -->|Yes| E["keep += 1; prev_end = e"]
+    D -->|No| F["skip (remove) this one"]
+    E --> C
+    F --> C
+    C --> G["answer = n - keep"]
 ```
 
 ## Why This Greedy Is Optimal (Sketch)
