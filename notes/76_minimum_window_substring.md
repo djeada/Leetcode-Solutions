@@ -29,14 +29,14 @@ Window optimality comes from always trimming surplus before recording.
 
 ```mermaid
 flowchart TD
-  A[Init counter from t; missing = |t|; left=0; best=None] --> B[for right in 0..n-1]
-  B --> C[Include s[right]: if counter>0 then missing-- ; counter--]
-  C --> D{missing == 0?}
-  D -->|No| B
-  D -->|Yes| E[While counter[s[left]] < 0: counter++ ; left++]
-  E --> F[Update best with [left, right]]
-  F --> G[Prepare next: counter[s[left]]++ ; left++ ; missing++]
-  G --> B
+    A["Init counter from t; missing = len(t); left = 0; best = None"] --> B["for right in 0..n-1"]
+    B --> C["Include s[right]: if counter > 0 then missing--; counter--"]
+    C --> D{"missing == 0?"}
+    D -->|No| B
+    D -->|Yes| E["While counter[s[left]] < 0: counter++; left++"]
+    E --> F["Update best with [left, right]"]
+    F --> G["Prepare next: counter[s[left]]++; left++; missing++"]
+    G --> B
 ```
 
 ## Invariants
@@ -44,7 +44,7 @@ flowchart TD
 * At any time, for each character $c$:
 
 $$
-\text{counter}(c) = \text{needed}(c) - \text{in\_window}(c).
+\text{counter}(c) = \text{needed}(c) - \text{in\\_window}(c).
 $$
 
 * `missing` equals $\sum_{c} \max(0, \text{counter}(c))$.
