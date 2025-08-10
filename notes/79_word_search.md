@@ -60,9 +60,9 @@ Let $L = |word|$.
 
 * **Time:** In the worst case, each of the $mn$ starts branches to up to 4 directions, then at most 3 thereafter (can’t immediately go back).
 
-  $$
-    O\!\left(mn \cdot 3^{L-1}\right)
-  $$
+$$
+O\!\left(mn \cdot 3^{L-1}\right)
+$$
 
   (often written $O(mn\cdot 4^L)$ as a looser bound).
 * **Space:** recursion depth $\le L$ → $O(L)$ stack; no extra visited array if we mutate the board (otherwise $O(L)$ or $O(mn)$ depending on representation).
