@@ -95,8 +95,8 @@
 ### Bitwise (5)
 
 * **Sum of Two Integers** *(LC 371)* — Use bitwise operators: XOR handles sum without carry, AND & shift computes carry; repeat until no carry remains. *Time:* $O(1)$ (bounded by 32 iterations), *Space:* $O(1)$.
-* **Number of 1 Bits** *(LC 191)* — Repeatedly clear the lowest set bit with $n \mathrel{\&}= (n-1)$ and count how many times until $n=0$. *Time:* $O(k)$, where $k$ = number of 1 bits, worst case $O(32)$, *Space:* $O(1)$.
-* **Counting Bits** *(LC 338)* — DP relation: $\text{bits}[i] = \text{bits}[i \gg 1] + (i \& 1)$ (drop last bit + parity). Build array bottom-up. *Time:* $O(n)$, *Space:* $O(n)$.
+* **Number of 1 Bits** *(LC 191)* — Repeatedly clear the lowest set bit with $n \wedge= (n-1)$ and count how many times until $n=0$. *Time:* $O(k)$, where $k$ = number of 1 bits, worst case $O(32)$, *Space:* $O(1)$.
+* **Counting Bits** *(LC 338)* — DP relation: $\text{bits}[i] = \text{bits}[i \gg 1] + (i \wedge 1)$ (drop last bit + parity). Build array bottom-up. *Time:* $O(n)$, *Space:* $O(n)$.
 * **Missing Number** *(LC 268)* — XOR all indices with all numbers; pairwise cancel leaves the missing value. Alternatively, subtract Gauss sum from actual sum. *Time:* $O(n)$, *Space:* $O(1)$.
 * **Reverse Bits** *(LC 190)* — Initialize result = 0; for 32 steps, shift result left and append last bit of n, then shift n right. *Time:* $O(1)$ (32 iterations), *Space:* $O(1)$.
 
@@ -160,7 +160,7 @@
 * **Valid Palindrome** *(LC 125)* — Two pointers skipping non-alphanumeric chars; compare lowercase versions. *Time:* $O(n)$, *Space:* $O(1)$.
 * **Longest Palindromic Substring** *(LC 5)* — Expand around each index as center (odd and even); track max length found. *Time:* $O(n^2)$, *Space:* $O(1)$.
 * **Palindromic Substrings** *(LC 647)* — Similar to above, but count all palindromes during center expansions. *Time:* $O(n^2)$, *Space:* $O(1)$.
-* **Encode and Decode Strings** *(LC 271, Premium)* — Encode with length-prefix format ($\text{len}\#\text{string}$) so delimiters don’t break decoding; parse sequentially. *Time:* $O(n)$, *Space:* $O(n)$.
+* **Encode and Decode Strings** *(LC 271, Premium)* — Encode with length-prefix format $\text{len}(\text{string})$ so delimiters don’t break decoding; parse sequentially. *Time:* $O(n)$, *Space:* $O(n)$.
 
 ### Trees / Trie (14)
 
