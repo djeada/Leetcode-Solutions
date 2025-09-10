@@ -261,7 +261,7 @@
 
 ### Binary Search
 
-* \*\*Not just indexes—\*\*also **“binary search on the answer.”** If predicate “feasible(x)” is monotone, search `x`.
+* **Not just indexes—**also **“binary search on the answer.”** If predicate “feasible(x)” is monotone, search `x`.
 * **Rotated arrays:** decide which half is sorted; move toward target side.
 * **Bounded answer:** beware overflow (`mid = l + (r−l)//2`), and ensure termination.
 
