@@ -79,7 +79,7 @@
 
 ## All Problems with short summaries
 
-## Arrays (10)
+### Arrays (10)
 
 * **Two Sum** *(LC 1)* — Use a hash map to store complements while scanning once; check if needed pair is already seen. *Time:* $O(n)$, *Space:* $O(n)$.
 * **Best Time to Buy and Sell Stock** *(LC 121)* — Track the running minimum price and update max profit by comparing current price − min. *Time:* $O(n)$, *Space:* $O(1)$.
@@ -187,3 +187,171 @@
   * **Heap:** push $(\text{freq}, \text{num})$ into a min-heap of size $k$; pop when size exceeds $k$.
   * *Time:* $O(n)$ with bucket / $O(n \log k)$ with heap, *Space:* $O(n)$.
 * **Find Median from Data Stream** *(LC 295)* — Maintain two heaps: max-heap for left half, min-heap for right half. Balance sizes so they differ by at most 1; median is top (or avg of tops). *Time:* $O(\log n)$ per insert, *Space:* $O(n)$.
+
+## High-level strategies
+
+### Core mindset
+
+* **State the ask precisely.** Subarray vs. subsequence? Exactly `k` vs. at most `k`? Order matters? Single answer vs. all answers?
+* **Exploit structure.** Sorted? Small alphabet? Bounded value range? Tree is BST? Graph is DAG? Use it.
+* **Start from brute → pattern.** Write the simplest correct idea; then look for a pattern (two pointers, window, heap, map, DP).
+* **Maintain an invariant.** What must stay true each step (window validity, heap balance, DSU parent relations, BST bounds)?
+
+### Universal pre-code checklist
+
+* **Inputs:** size limits, value bounds, duplicates allowed, negative numbers present?
+* **Output:** count / value / indices / path / all solutions?
+* **Time target:** $O(n)$, $O(n \log n)$, or acceptable up to $O(n^2)$?
+* **Memory target:** extra $O(1)$ vs. $O(n)$?
+* **Edge cases:** empty / singleton, all equal, already sorted, extremes ($\min / \max$), ties.
+
+### Arrays & Two Pointers
+
+* **When to use:** sorted arrays; problems asking for pair/triple with sum/condition; “container/water,” “move zeros,” “dedupe.”
+* **Patterns:**
+
+  * **Opposite-ends:** move the pointer that helps the objective (e.g., shorter wall in water, sum too big → right--).
+  * **Same-direction (fast/slow):** for deduping, partitioning, Dutch flag, “remove in place.”
+  * **Middle-out:** for symmetric expansion (palindromes, center expansion).
+* **Watch for:** sort + two pointers for 2-sum/3-sum; skip duplicates; overflow with products; negatives break simple windows.
+
+### Strings
+
+* **Triggers:** anagram, distinct/repeated chars, palindrome, smallest window, encode/decode.
+* **Go-to tools:** frequency maps, fixed-size arrays (26/128/256), sliding window, center expansion.
+* **Rules of thumb:**
+
+  * For **anagrams/grouping**, use **char-count signature** (faster than sorting for long words).
+  * For **palindromes**, prefer **expand-around-center** (O(n²) worst-case but simple).
+  * For **encoding**, avoid delimiters—**length-prefix** is robust.
+
+### Sliding Window (subarray/substring)
+
+* **Use when:** “longest/shortest subarray/substring with property,” “at most/exactly k,” “first window meeting condition.”
+* **Skeleton:** expand right; update state; while invalid → shrink left; track best.
+* **Variants:**
+
+  * **At most k:** standard window with counts and a `valid` predicate.
+  * **Exactly k:** use “at most k” twice → `ans = atMost(k) − atMost(k−1)`.
+  * **Fixed length:** maintain counts in O(1) as you slide.
+  * **Negative numbers present?** Classic windows fail for sums—switch to **prefix sums + hash**.
+* **Gotchas:** decrement counts and delete zeros; when tracking max-freq in window, you can keep a stale max and not shrink it back.
+
+### Prefix Sums & Hashing
+
+* **Use when:** subarray sums, differences, balance (e.g., 0/1 counts), earliest index constraints.
+* **Key idea:** map `prefix_value → earliest_index`; when you see it again you’ve closed a valid segment.
+* **Tricks:** normalize states (e.g., `countA−countB`) to detect equal counts.
+
+### Sorting
+
+* **Use when:** intervals, k-closest, sweep-line, deduping, anagram grouping (if small strings).
+* **Common orders:** start then end for intervals; value then index for custom stability.
+* **After sorting:** fold/sweep once; greedy usually emerges.
+
+### Intervals
+
+* **Playbook:** sort by start; either **merge** overlaps into a running interval or **greedy by earliest end** to minimize removals/rooms.
+* **Rooms/overlaps:** min-heap of end-times; pop while `end <= start`.
+
+### Greedy
+
+* **Recognize by:** optimal substructure + local choice proof (exchange argument).
+* **Examples:** Jump Game (furthest reach), interval scheduling (earliest finish), stock buy/sell (track min).
+
+### Binary Search
+
+* **Not just indexes—**also **“binary search on the answer.”** If predicate “feasible(x)” is monotone, search `x`.
+* **Rotated arrays:** decide which half is sorted; move toward target side.
+* **Bounded answer:** beware overflow (`mid = l + (r−l)//2`), and ensure termination.
+
+### Heaps & Top-K
+
+* **Use when:** “top/bottom K,” running median, merging sorted lists, meeting rooms.
+* **Patterns:**
+
+  * **Size-K min-heap** for top K largest; **max-heap** for top K smallest.
+  * **Two-heaps** for median; keep sizes balanced and order invariant.
+
+### Hash Maps / Sets
+
+* **When:** membership, complement (Two Sum), frequency, first seen index.
+* **Tricks:** `defaultdict/counter`, XOR for missing/unique, rolling hashes for substrings (if needed).
+
+### Graphs
+
+* **Model first:** adjacency list; note **directed vs. undirected**, **weighted?** and **connected?**
+* **Traversals:** DFS for recursion/backtracking; BFS for **shortest edges count** in unweighted graphs.
+* **Toposort:** DAG ordering (course schedule, alien dictionary) with **in-degree (Kahn)** or **DFS + cycle check**.
+* **Union-Find (DSU):** connectivity, cycle detection, component counts; use **path compression + union by rank**.
+
+### Trees
+
+* **Divide & Conquer:** define **return value** carefully (e.g., height, best-down path); combine left/right.
+* **BST specifics:** inorder is sorted; use **bounds** `[lo, hi)` for validation; LCA guided by key comparisons.
+* **Traversal toolbox:** preorder (build), inorder (BST ops), postorder (delete/height/path sum).
+* **Serialize/deserialize:** level-order with nulls or preorder with markers; be consistent.
+
+### Tries
+
+* **Use when:** many prefixes, wildcard search, word board.
+* **Patterns:** `children[char]` map + `isEnd`; for wildcard `.` use DFS branching; for board combine **Trie + DFS** with pruning.
+
+### Linked Lists
+
+* **Pointers over arrays.** Fast/slow for cycle; **reverse in place** for many tasks (reorder, palindrome).
+* **Templates:** merge with dummy head; split via slow/fast; remove Nth via two pointers.
+
+### Dynamic Programming
+
+* **When to suspect DP:** overlapping subproblems + optimal substructure; exponential recursion if naïve.
+* **3 steps:** define **state**, write **transition**, set **base cases**.
+* **Space tricks:** compress dimensions (e.g., 1D from 2D), keep only last row/col.
+* **Flavors:**
+
+  * **1D linear** (rob/climb/coins),
+  * **Sequence DP** (LIS with tails, LCS with 2D),
+  * **Partition/knapsack** (unbounded vs. 0/1),
+  * **Grid DP** (unique paths).
+* **Top-down vs bottom-up:** memo recursion for clarity; tabulate for speed/iterative control.
+
+### Backtracking
+
+* **Use when:** generate all valid combinations/paths/words.
+* **Template:** choose → recurse → un-choose; maintain candidates, path, and pruning rules.
+* **Pruning:** sorted inputs to skip dups; bounds checks; early goal tests.
+
+### Bit Manipulation
+
+* **Common moves:** `n & (n−1)` to drop LSB 1; XOR to cancel pairs; bit masks for subsets/states; shifting for encode/decode.
+* **Beware:** signed/unsigned shifts; 32-bit vs. Python big ints—mask if needed.
+
+### Matrix / Grid
+
+* **Traversal:** 4-dir/8-dir with visited; boundaries; flood-fill.
+* **In-place tricks:** reuse first row/col as flags; rotate via transpose + reverse.
+* **Word search:** DFS + backtrack; mark visited temporarily.
+
+### Decision cues
+
+* **Subarray/substring + “longest/shortest/at most k” →** Sliding window.
+* **Subarray sum with negatives →** Prefix sum + hash.
+* **Top K / streaming / medians →** Heap(s).
+* **Dependencies / ordering →** Toposort (Kahn/DFS).
+* **Connectivity / cycles (undirected) →** DSU or DFS; **(directed)** DFS cycle detect.
+* **Many prefix queries / wildcard char search →** Trie.
+* **Intervals overlap / rooms / removals →** Sort + merge or end-time greedy + heap.
+* **Rotations/search monotone property →** Binary search (including on answer).
+* **Paths/aggregates on trees →** Postorder D&C with well-defined returns.
+* **All combinations/permutations/partitioning →** Backtracking with pruning.
+* **“Furthest you can reach” type →** Greedy scan with invariant.
+
+### Pitfalls & edge cases
+
+* Empty inputs; single element; all duplicates; all negatives; overflow (products/sums); off-by-one on windows; forgetting to remove zero-count keys; revisiting grid cells; recursion depth (convert to stack/BFS if needed).
+
+### Verification quickies
+
+* **Construct tiny tests** that hit each branch (empty, minimal valid, ties, duplicates, negatives).
+* **Check invariants** after each step on a small trace.
+* **Cross-validate** two methods on random small cases (e.g., brute vs. optimized).
