@@ -342,7 +342,7 @@
 * **Many prefix queries / wildcard char search →** Trie.
 * **Intervals overlap / rooms / removals →** Sort + merge or end-time greedy + heap.
 * **Rotations/search monotone property →** Binary search (including on answer).
-* **Paths/aggregates on trees →** Postorder D\&C with well-defined returns.
+* **Paths/aggregates on trees →** Postorder D&C with well-defined returns.
 * **All combinations/permutations/partitioning →** Backtracking with pruning.
 * **“Furthest you can reach” type →** Greedy scan with invariant.
 
