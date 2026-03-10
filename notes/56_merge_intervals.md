@@ -1,65 +1,60 @@
 ## Data Structures
 
-* **Key variables and data structures used in the solution**
+**`intervals`**  
+- The input list of `[start, end]` pairs, sorted in-place by start time.
 
-## Overall Approach
+**`merged`**  
+- A result list initialized with the first interval. Each new interval is either merged into the last element or appended as a new entry.
 
-The problem asks us to merge all overlapping intervals.
+## What happens in `merge()`?
 
-This solution involves **Sorting** the input for efficient processing.
-
-The algorithm works by:
-
-1. **Step 1**
-   
-   ```python
-   def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        if not intervals:
-            return list()
-   ```
-2. **Step 2**
-   
-   ```python
-   for pair in intervals[1:]:
-            # overlap
-            if merged[-1][1] >= pair[0]:
-                if pair[1] > merged[-1][1]:
-   ```
-
-## Complexity Analysis
-
-* **Time Complexity**: O(n log n)
-* **Space Complexity**: O(1)
-
-## Key Insights
-
-* Consider edge cases and boundary conditions
-* The algorithm handles the problem constraints efficiently
-
-## Source Code Analysis
-
-```python
-class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        if not intervals:
-            return list()
-
-        intervals.sort(key=lambda pair: pair[0])
-        merged = [intervals[0]]
-        
-        for pair in intervals[1:]:
-            # overlap
-            if merged[-1][1] >= pair[0]:
-                if pair[1] > merged[-1][1]:
-                    merged[-1][1] = pair[1]
-            # no overlap
-            else:
-                merged.append(pair)
-
-        return merged
+```mermaid
+flowchart TD
+  A["Return empty list if intervals is empty"] --> B["Sort intervals by start time"]
+  B --> C["Initialize merged = [intervals[0]]"]
+  C --> D{"More intervals?"}
+  D -->|Yes| E{"merged[-1][1] >= pair[0]?"}
+  E -->|Yes overlap| F["Extend: merged[-1][1] = max of both ends"]
+  E -->|No overlap| G["Append pair to merged"]
+  F --> D
+  G --> D
+  D -->|No| H["Return merged"]
 ```
 
-## Related Problems
+1. **Edge case**  
+   ```python
+   if not intervals:
+       return list()
+   ```
 
-* Similar problems involving the same algorithmic techniques
-* Problems with related data structures or approaches
+2. **Sort by start time**  
+   ```python
+   intervals.sort(key=lambda pair: pair[0])
+   ```
+   Sorting guarantees that for any two adjacent intervals, the first one starts no later than the second. This means we only need to check the end of the last merged interval against the start of the current one.
+
+3. **Seed the result**  
+   ```python
+   merged = [intervals[0]]
+   ```
+
+4. **Iterate and merge**  
+   For each remaining interval `pair`:
+   - **Overlap** — `merged[-1][1] >= pair[0]`:  
+     The current interval starts before (or exactly when) the last merged interval ends, so they overlap. Extend the end if needed:
+     ```python
+     if pair[1] > merged[-1][1]:
+         merged[-1][1] = pair[1]
+     ```
+   - **No overlap** — the current interval starts after the last merged interval ends:
+     ```python
+     merged.append(pair)
+     ```
+
+5. **Return result**  
+   `merged` now contains all non-overlapping intervals.
+
+## Complexity
+
+- **Time:** O(n log n), dominated by the sort. The single pass through intervals is O(n).  
+- **Space:** O(n) for the `merged` output list in the worst case (no overlaps).
