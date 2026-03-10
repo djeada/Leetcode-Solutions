@@ -33,6 +33,7 @@ flowchart TD
 * The recursive call returns the new head of the fully reversed suffix.
 * `head.next.next = head` is the key pointer flip that reverses the local edge.
 * Resetting `head.next = None` is necessary to terminate the reversed list correctly.
+* The source file also keeps a commented iterative version, but the active implementation is the recursive one described above.
 
 ## Source Code Analysis
 

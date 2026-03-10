@@ -1,7 +1,7 @@
 ## Data Structures
 
-* **`a`** and **`b`**: the current partial sum and carry values.
-* **`MASK`**: `2^32 - 1`, used to limit intermediate results to 32 bits.
+* **`a`** and **`b`**: the two input integers; during the loop, `a` is updated to the sum bits without carry and `b` is updated to the carry bits.
+* **`MASK`**: `(2^32) - 1`, used to limit intermediate results to 32 bits.
 * **`MAX`**: the largest positive signed 32-bit integer, used to detect negative answers in two's complement form.
 * **`_sum`**: the sum bits without carry.
 * **`carry`**: the carry bits shifted left by one position.
