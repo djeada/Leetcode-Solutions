@@ -13,8 +13,6 @@
 - `dfs_stack: List[Tuple[int, int, int]]`, an explicit stack for iterative DFS.  
   - Each frame is `(node, parent, next_neighbor_index)`.
 
----
-
 ## What happens in `criticalConnections`
 
 We run a **Tarjan‑style bridge‑finding** via an **iterative DFS**. As we explore, we assign each node a discovery time and maintain its low‑link. Whenever we finish processing a child subtree and find `low_link[child] > discovery_time[parent]`, the edge is a bridge.
@@ -54,63 +52,95 @@ flowchart TD
   end
 ```
 
----
-
 ### Step‑by‑step
 
-1. **Build adjacency list**  
-   ```python
-   adjacency_list = [[] for _ in range(N)]
-   for u, v in connections:
-       adjacency_list[u].append(v)
-       adjacency_list[v].append(u)
-   ```
+Step 1: Build the adjacency list
 
-2. **Initialize arrays**  
-   ```python
-   discovery_time = [-1]*N
-   low_link       = [0]*N
-   time_stamp     = 0
-   bridge_edges   = []
-   dfs_stack      = []
-   ```
+We convert the list of edges into a structure that makes traversal easy.
+Each node keeps a list of its neighbors.
 
-3. **Iterate components**  
-   For each node `start` from `0` to `N−1`:
-   - If already visited (`discovery_time[start] != -1`), skip.
-   - Otherwise, push `(start, parent=-1, next_neighbor_index=0)` to `dfs_stack`.
+```
+adjacency_list = [[] for _ in range(N)]
+for u, v in connections:
+    adjacency_list[u].append(v)
+    adjacency_list[v].append(u)
+```
 
-4. **Iterative DFS**  
-   While the stack isn’t empty:
-   - Pop `(node, parent, idx)`.
-   - **First time** at this node (`idx == 0`):  
-     ```python
-     discovery_time[node] = low_link[node] = time_stamp
-     time_stamp += 1
-     ```
-   - **Process neighbors** starting from `idx`:  
-     - If a neighbor `w` has `discovery_time[w] == -1` (tree edge):  
-       1. Push `(node, parent, next_idx)` back on stack to resume later.  
-       2. Push `(w, node, 0)` to explore `w`.  
-       3. **Break** to dive deeper.
-     - Else if `w != parent` (back edge):  
-       ```python
-       low_link[node] = min(low_link[node], discovery_time[w])
-       ```
-     - Continue scanning until all neighbors are done.
-   - **Backtracking** (no more neighbors):  
-     - If `parent != -1`, update its low‑link:  
-       ```python
-       low_link[parent] = min(low_link[parent], low_link[node])
-       ```
-     - If `low_link[node] > discovery_time[parent]`, the edge `(parent,node)` is a **bridge**; record it.
+This works because the graph is undirected, so every edge goes both ways.
 
-5. **Return**  
-   ```python
-   return bridge_edges
-   ```
+Step 2: Initialize helper variables
 
----
+We prepare arrays to track the DFS process.
+
+`discovery_time = [-1] * N` stores when each node is first visited.
+`low_link = [0] * N` stores the earliest reachable discovery time.
+`time_stamp = 0` is a global counter.
+`bridge_edges = []` will store the result.
+`dfs_stack = []` simulates recursion
+
+Step 3: Iterate through all nodes
+
+We loop through every node to ensure disconnected components are also handled.
+
+For each node, if it has already been visited (its discovery time is not -1), we skip it.
+Otherwise, we start a DFS from that node.
+
+`dfs_stack.append((start, -1, 0))`
+
+Each stack entry contains:
+node, its parent, and the index of the next neighbor to explore.
+
+Step 4: Iterative DFS process
+
+We process nodes using the stack until it becomes empty.
+
+When we first visit a node (its neighbor index is 0), we assign its discovery time and initialize its low-link value.
+
+```
+discovery_time[node] = time_stamp
+low_link[node] = time_stamp
+time_stamp += 1
+```
+
+Then we explore its neighbors.
+
+If we find an unvisited neighbor, it is a tree edge.
+We pause the current node and go deeper:
+
+```
+dfs_stack.append((node, parent, next_idx))
+dfs_stack.append((neighbor, node, 0))
+```
+
+If we find a visited neighbor that is not the parent, it is a back edge.
+We update the low-link value:
+
+`low_link[node] = min(low_link[node], discovery_time[neighbor])`
+
+If all neighbors are processed, we backtrack.
+
+When backtracking, we update the parent’s low-link value:
+
+`low_link[parent] = min(low_link[parent], low_link[node])`
+
+Then we check if the edge is a bridge:
+
+```
+if low_link[node] > discovery_time[parent]:
+    bridge_edges.append((parent, node))
+```
+
+This condition means the subtree rooted at this node cannot reach any earlier node without using this edge.
+
+Step 5: Return result
+
+After finishing DFS for all components, we return:
+
+`return bridge_edges`
+
+The core idea is simple:
+low-link values tell us how far back a node (or its subtree) can reach.
+If it cannot reach above its parent, then the edge to the parent is a bridge.
 
 ## Example
 
@@ -123,8 +153,6 @@ connections = [[0,1],[1,2],[2,0],[1,3],[3,4]]
 - Edges `(1,3)` and `(3,4)` are bridges.
 
 Running the algorithm yields `[[3,4],[1,3]]` (order may vary).
-
----
 
 ## Complexity
 
