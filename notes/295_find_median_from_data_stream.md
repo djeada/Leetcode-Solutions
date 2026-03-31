@@ -70,6 +70,6 @@ flowchart TD
 
 ## Complexity
 
-* **addNum:** O(log n) per insertion (heap push/pop).
-* **findMedian:** O(1) time.
-* **Space:** O(n) to store all numbers across both heaps.
+* **addNum:** $O(\log n)$ per insertion (heap push/pop).
+* **findMedian:** $O(1)$ time.
+* **Space:** $O(n)$ to store all numbers across both heaps.

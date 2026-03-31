@@ -106,9 +106,9 @@ flowchart TD
 
   * The depth of recursion can go up to `target / min(candidates)`.
   * At each level, you may choose among up to `len(candidates)` options.
-  * Upper bound roughly O(k^(T/m)), where k = number of candidates, T = target, m = minimum candidate value.
+  * Upper bound roughly $O(k^(T/m))$, where k = number of candidates, T = target, m = minimum candidate value.
 
 * **Space:**
 
-  * **O(T/m)** recursive call stack depth.
-  * **O(#solutions × average\_solution\_length)** for storing all valid combinations in **results**.
+  * $O(T/m)$ recursive call stack depth.
+  * $O(\#solutions \times average_solution_length)$ for storing all valid combinations in **results**.

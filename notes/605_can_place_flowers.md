@@ -106,9 +106,9 @@ n = 1
 ## Complexity
 
 - **Time:**  
-  - Padding: O(m).  
-  - Single pass over `padded`: O(m).  
-  - **Overall:** O(m).
+  - Padding: $O(m)$.  
+  - Single pass over `padded`: $O(m)$.  
+  - **Overall:** $O(m)$.
 
 - **Space:**  
-  - O(m) for the `padded` list, plus O(1) extra.
+  - $O(m)$ for the `padded` list, plus $O(1)$ extra.

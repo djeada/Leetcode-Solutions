@@ -81,8 +81,8 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(n), where n = length of **s**.
+* **Time:** $O(n)$, where n = length of **s**.
 
   * Each index **R** is visited once; **L** only moves forward, so both pointers traverse the string linearly.
 
-* **Space:** O(1) (or O(26)), since **count** stores at most 26 letters.
+* **Space:** $O(1)$ (or $O(26)$), since **count** stores at most 26 letters.

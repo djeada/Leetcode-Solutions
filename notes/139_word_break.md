@@ -7,7 +7,7 @@
 **`wordDict`**
 
 * List of valid words.
-* Internally used as a set membership test for `O(1)` lookups (convert if needed).
+* Internally used as a set membership test for $O(1)$ lookups (convert if needed).
 
 **`n`**
 

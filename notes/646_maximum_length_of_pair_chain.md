@@ -77,9 +77,9 @@ pairs = [[1,2], [2,3], [3,4]]
 ## Complexity
 
 - **Time:**  
-  - Sorting: O(m log m).  
-  - Single scan through `pairs_sorted`: O(m).  
-  - **Overall:** O(m log m).
+  - Sorting: $O(m \log m)$.  
+  - Single scan through `pairs_sorted`: $O(m)$.  
+  - **Overall:** $O(m \log m)$.
 
 - **Space:**  
-  - O(m) for the sorted list (or in‑place sort) and O(1) extra variables.
+  - $O(m)$ for the sorted list (or in‑place sort) and $O(1)$ extra variables.

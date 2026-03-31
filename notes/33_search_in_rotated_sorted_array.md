@@ -129,10 +129,10 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(log n)
+* **Time:** $O(\log n)$
 
   * Each iteration halves the search space.
 
-* **Space:** O(1)
+* **Space:** $O(1)$
 
   * Uses only a fixed number of index and value variables.

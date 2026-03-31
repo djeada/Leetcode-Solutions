@@ -25,8 +25,8 @@ This produces the correct answer for every index without using extra prefix and 
 
 ## Complexity Analysis
 
-* **Time Complexity**: `O(n)`, because the array is traversed twice.
-* **Space Complexity**: `O(1)` extra space if the output array is not counted.
+* **Time Complexity**: $O(n)$, because the array is traversed twice.
+* **Space Complexity**: $O(1)$ extra space if the output array is not counted.
 
 ## Key Insights
 

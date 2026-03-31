@@ -97,11 +97,11 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(N log k)
+* **Time:** $O(N \log k)$
 
   * N = total number of nodes across all k lists.
-  * Each node is pushed and popped exactly once from a heap of size at most k, costing O(log k) per operation.
+  * Each node is pushed and popped exactly once from a heap of size at most k, costing $O(\log k)$ per operation.
 
-* **Space:** O(k)
+* **Space:** $O(k)$
 
   * The heap holds at most one node from each list at any time.

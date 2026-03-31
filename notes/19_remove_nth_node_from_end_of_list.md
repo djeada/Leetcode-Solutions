@@ -89,11 +89,11 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(L), where L is the length of the list.
+* **Time:** $O(L)$, where L is the length of the list.
 
-  * First loop advances **fast** by **n+1** steps: O(n).
-  * Second loop moves both pointers until **fast** hits the end: up to O(L−n).
+  * First loop advances **fast** by **n+1** steps: $O(n)$.
+  * Second loop moves both pointers until **fast** hits the end: up to $O(L-n)$.
 
-* **Space:** O(1)
+* **Space:** $O(1)$
 
   * Only a constant number of pointers and a dummy node are used.

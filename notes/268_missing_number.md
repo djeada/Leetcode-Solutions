@@ -84,14 +84,14 @@ flowchart TD
 
   * **Option 1:**
 
-    * Summing array: O(n)
-    * Constant-time arithmetic: O(1)
-    * **Total:** O(n)
+    * Summing array: $O(n)$
+    * Constant-time arithmetic: $O(1)$
+    * **Total:** $O(n)$
   * **Option 2:**
 
-    * Single pass with XOR per element: O(n)
-    * **Total:** O(n)
+    * Single pass with XOR per element: $O(n)$
+    * **Total:** $O(n)$
 
 * **Space:**
 
-  * **Both options:** O(1) extra space (only a few integer variables).
+  * **Both options:** $O(1)$ extra space (only a few integer variables).

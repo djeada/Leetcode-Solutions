@@ -24,8 +24,8 @@ flowchart TD
 
 ## Complexity Analysis
 
-* **Time Complexity**: `O(n)` on average, where `n` is the length of `nums`.
-* **Space Complexity**: `O(n)` in the worst case if all numbers are unique.
+* **Time Complexity**: $O(n)$ on average, where `n` is the length of `nums`.
+* **Space Complexity**: $O(n)$ in the worst case if all numbers are unique.
 
 ## Key Insights
 

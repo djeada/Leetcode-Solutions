@@ -41,7 +41,7 @@ This separation ensures decisions are based solely on the original configuration
 * **Pass 1:** build $R$ and $C$ by scanning for zeros.
 * **Pass 2:** zero any $(i,j)$ with $i\in R$ or $j\in C$.
 
-## Optional Optimization (O(1) Extra Space)
+## Optional Optimization ($O(1)$ Extra Space)
 
 Use the first row and first column of `matrix` itself as the marker arrays:
 

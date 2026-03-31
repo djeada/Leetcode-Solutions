@@ -55,11 +55,11 @@ flowchart TD
 
 ## Complexity Analysis
 
-* **Time Complexity**: `O(n)`, where `n` is the number of nodes in the tree. Every node is enqueued and dequeued exactly once.
-* **Space Complexity**: `O(w)`, where `w` is the maximum width of the tree (the largest number of nodes on any single level). In the worst case of a complete binary tree this is `O(n/2)` = `O(n)`.
+* **Time Complexity**: $O(n)$, where `n` is the number of nodes in the tree. Every node is enqueued and dequeued exactly once.
+* **Space Complexity**: $O(w)$, where `w` is the maximum width of the tree (the largest number of nodes on any single level). In the worst case of a complete binary tree this is $O(n/2)$ = $O(n)$.
 
 ## Key Insights
 
 * Measuring `len(queue)` before processing a level is the mechanism that separates one depth layer from the next.
 * BFS naturally counts depth by exhausting entire levels, making it a direct fit for this problem.
-* The recursive DFS alternative achieves the same `O(n)` time and `O(h)` space (where `h` is the tree height), but is susceptible to stack overflow on deeply skewed trees.
+* The recursive DFS alternative achieves the same $O(n)$ time and $O(h)$ space (where `h` is the tree height), but is susceptible to stack overflow on deeply skewed trees.

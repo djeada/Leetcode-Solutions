@@ -103,5 +103,5 @@ Returns `False` — index 4 is beyond `furthest` (3).
 
 ## Complexity
 
-- **Time:** O(n) — single pass through the array; each element is visited at most once.
-- **Space:** O(1) — only a fixed number of integer variables regardless of input size.
+- **Time:** $O(n)$ — single pass through the array; each element is visited at most once.
+- **Space:** $O(1)$ — only a fixed number of integer variables regardless of input size.

@@ -60,5 +60,5 @@ flowchart TD
 
 ## Complexity
 
-- **Time:** O(n), each pointer moves inward at most n steps.  
-- **Space:** O(1), only a fixed number of variables are used.
+- **Time:** $O(n)$, each pointer moves inward at most n steps.  
+- **Space:** $O(1)$, only a fixed number of variables are used.

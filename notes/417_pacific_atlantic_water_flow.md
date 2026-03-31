@@ -98,11 +98,11 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(m × n)
+* **Time:** $O(m \times n)$
 
-  * Each BFS visits and processes each cell at most once, checking four neighbors → O(m n).
-  * Two BFS calls → still O(m n).
+  * Each BFS visits and processes each cell at most once, checking four neighbors → $O(m n)$.
+  * Two BFS calls → still $O(m n)$.
 
-* **Space:** O(m × n)
+* **Space:** $O(m \times n)$
 
-  * Two reachable matrices of size m×n and a queue that in the worst case can hold O(m n) entries.
+  * Two reachable matrices of size m×n and a queue that in the worst case can hold $O(m n)$ entries.

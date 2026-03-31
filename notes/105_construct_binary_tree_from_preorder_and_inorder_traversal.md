@@ -12,7 +12,7 @@ Auxiliary:
 
 **`idx_map`**  
 - A dictionary mapping each value in `inorder` to its index.  
-- Allows O(1) lookup of the root’s position in the inorder sequence.
+- Allows $O(1)$ lookup of the root’s position in the inorder sequence.
 
 **`self.pre_idx`**  
 - An integer pointer into `preorder`, indicating the next root to process.
@@ -57,9 +57,9 @@ flowchart TD
 
 ## Complexity
 
-- **Time:** O(n)  
-  Each of the n nodes is created once, and lookups in `idx_map` are O(1).
+- **Time:** $O(n)$  
+  Each of the n nodes is created once, and lookups in `idx_map` are $O(1)$.
 
-- **Space:** O(n)  
-  - The `idx_map` uses O(n) extra space.  
-  - Recursion stack may go O(n) deep in the worst (skewed) tree.
+- **Space:** $O(n)$  
+  - The `idx_map` uses $O(n)$ extra space.  
+  - Recursion stack may go $O(n)$ deep in the worst (skewed) tree.

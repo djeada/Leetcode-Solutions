@@ -86,7 +86,7 @@ fee    = 2
 ## Complexity
 
 - **Time:**  
-  - Single pass over `prices`: **O(n)**.
+  - Single pass over `prices`: $O(n)$.
 
 - **Space:**  
-  - **O(1)** extra space (just two state variables and temporaries).
+  - $O(1)$ extra space (just two state variables and temporaries).

@@ -33,7 +33,7 @@ We split the 32-bit integer into **four 8-bit bytes** and use a **precomputed lo
           + POP_COUNT[(n >> 24) & 0xFF])
     ```
 
-    Each table lookup is O(1); four lookups and three additions give the total Hamming weight.
+    Each table lookup is $O(1)$; four lookups and three additions give the total Hamming weight.
 
 ```mermaid
 flowchart TD

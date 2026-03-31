@@ -121,10 +121,10 @@ No cycle detected; **answer = 3** (the longest “a”‑chain along path 0→2�
 ## Complexity
 
 - **Time:**  
-  - Building the graph and in‑degree: O(N + E).  
-  - Kahn’s loop processes each node once and each edge once. For each edge we do a 26‑length scan → O(26·E) = O(E).  
-  - **Total:** O(N + E).
+  - Building the graph and in‑degree: $O(N + E)$.  
+  - Kahn’s loop processes each node once and each edge once. For each edge we do a 26‑length scan → $O(26 \cdot E)$ = $O(E)$.  
+  - **Total:** $O(N + E)$.
 
 - **Space:**  
-  - **O(N + E)** for the adjacency list.  
-  - **O(26·N) = O(N)** for the `dp_counts` table.
+  - $O(N + E)$ for the adjacency list.  
+  - **$O(26 \cdot N)$ = $O(N)$** for the `dp_counts` table.

@@ -25,8 +25,8 @@ flowchart TD
 
 ## Complexity Analysis
 
-* **Time Complexity**: `O(n)`, because each node is visited once.
-* **Space Complexity**: `O(n)` due to the recursion stack.
+* **Time Complexity**: $O(n)$, because each node is visited once.
+* **Space Complexity**: $O(n)$ due to the recursion stack.
 
 ## Key Insights
 
