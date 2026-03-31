@@ -92,8 +92,8 @@ seats = [1, 0, 0, 0, 1, 0, 1]
 
 3. **Middle zeros**:  
 - Scan runs:  
- - Between index 0 and 4: run of length 3 (`[0,0,0]`)  
- - Between index 4 and 6: run of length 1 (`[0]`)  
+- Between index 0 and 4: run of length 3 (`[0,0,0]`)  
+- Between index 4 and 6: run of length 1 (`[0]`)  
 - `max_distance = 3` → middle candidate distance = `ceil(3/2) = 2`
 
 4. **Answer**:

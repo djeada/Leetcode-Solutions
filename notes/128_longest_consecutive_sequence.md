@@ -31,8 +31,8 @@ We leverage a hash set to achieve an $O(n)$-time solution by only exploring sequ
 2. **Find sequence starts**
    Loop through each unique value `x` in `num_set`.
 
-   * If `x - 1` is *not* in `num_set`, then `x` must be the beginning of a consecutive run (because no smaller neighbor precedes it).
-   * Otherwise, skip it—its sequence will be (or has been) counted when we started from a smaller value.
+* If `x - 1` is *not* in `num_set`, then `x` must be the beginning of a consecutive run (because no smaller neighbor precedes it).
+* Otherwise, skip it—its sequence will be (or has been) counted when we started from a smaller value.
 
 3. **Walk the run**
 
@@ -47,8 +47,8 @@ We leverage a hash set to achieve an $O(n)$-time solution by only exploring sequ
 
    Once we identify a start `x`, increment `y` until it no longer appears in `num_set`.
 
-   * The length of this run is `(y - x)` because it covers all integers from `x` up to `y−1`.
-   * Update `longest` if this run is longer than any previously seen run.
+* The length of this run is `(y - x)` because it covers all integers from `x` up to `y−1`.
+* Update `longest` if this run is longer than any previously seen run.
 
 4. **Return result**
    After examining every `x`, `longest` holds the maximum consecutive-sequence length. Return it.
@@ -77,10 +77,10 @@ flowchart TD
 1. **`BuildSet`**: Construct `num_set` and initialize `longest = 0`.
 2. **`LoopX`**: For each element `x` in `num_set`:
 
-   * **`IsStart`**: Check if `(x - 1)` exists in `num_set`.
+* **`IsStart`**: Check if `(x - 1)` exists in `num_set`.
 
-     * If **yes**, skip this `x` because its sequence will be counted from a lower start.
-     * If **no**, proceed to **`InitY`**.
+* If **yes**, skip this `x` because its sequence will be counted from a lower start.
+* If **no**, proceed to **`InitY`**.
 3. **`InitY`**: Set `y = x + 1`.
 4. **`Walk`**: Increment `y` while it remains in `num_set`. When it exits the set, the run is `[x, x+1, …, y-1]`.
 5. **`Update`**: Compute the run length as `(y - x)` and update `longest`.
@@ -90,14 +90,14 @@ flowchart TD
 
 * **Time:** $O(n)$
 
-  * Building `num_set` from `nums` costs $O(n)$.
-  * Each element is inserted once, and each is visited at most twice:
+* Building `num_set` from `nums` costs $O(n)$.
+* Each element is inserted once, and each is visited at most twice:
 
-    1. Once when checking if it’s a “start” (`x - 1 not in num_set`),
-    2. At most once while “walking” a run (every element in a run is checked by `while y in num_set`).
+1. Once when checking if it’s a “start” (`x - 1 not in num_set`),
+2. At most once while “walking” a run (every element in a run is checked by `while y in num_set`).
        Thus, overall linear in the number of input elements.
 
 * **Space:** $O(n)$
 
-  * The `num_set` holds up to all elements of `nums`.
-  * All other variables (`longest`, `x`, `y`) use constant extra space.
+* The `num_set` holds up to all elements of `nums`.
+* All other variables (`longest`, `x`, `y`) use constant extra space.

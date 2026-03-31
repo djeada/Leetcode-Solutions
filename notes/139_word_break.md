@@ -17,16 +17,14 @@
 
 * Boolean list of length `n+1`:
 
-  * `dp[i] == True` means `s[0:i]` (the first `i` characters) can be segmented into words from `wordDict`.
-  * Initialized as
+* `dp[i] == True` means `s[0:i]` (the first `i` characters) can be segmented into words from `wordDict`.
+* Initialized as
 
     ```python
     dp = [True] + [False] * n
     ```
 
     so that `dp[0] = True` (empty string is “segmented”).
-
----
 
 ## What happens in `wordBreak()`
 
@@ -50,8 +48,8 @@ flowchart TD
    word_set = set(wordDict)   # optional for faster lookup
    ```
 
-   * `dp[0] = True` because an empty prefix is trivially segmented.
-   * All other `dp[i]` start as `False`.
+* `dp[0] = True` because an empty prefix is trivially segmented.
+* All other `dp[i]` start as `False`.
 
 2. **Populate DP array**
 
@@ -63,9 +61,9 @@ flowchart TD
                break                 # no need to check smaller j
    ```
 
-   * **Outer loop (`i`)** iterates over all prefix lengths.
-   * **Inner loop (`j`)** tries every possible last word `s[j:i]`.
-   * If the prefix up to `j` is segmentable (`dp[j] == True`) **and** the suffix `s[j:i]` is a word, mark `dp[i] = True` and stop checking shorter suffixes.
+* **Outer loop (`i`)** iterates over all prefix lengths.
+* **Inner loop (`j`)** tries every possible last word `s[j:i]`.
+* If the prefix up to `j` is segmentable (`dp[j] == True`) **and** the suffix `s[j:i]` is a word, mark `dp[i] = True` and stop checking shorter suffixes.
 
 3. **Return result**
 
@@ -73,19 +71,17 @@ flowchart TD
    return dp[n]
    ```
 
-   * If `dp[n]` is `True`, the entire string `s` can be segmented; otherwise, it cannot.
-
----
+* If `dp[n]` is `True`, the entire string `s` can be segmented; otherwise, it cannot.
 
 ## Complexity
 
 * **Time:**
 
-  * Outer loop runs `n` times.
-  * Inner loop scans up to `n` splits each time, and substring lookup is $O(k)$ for substring creation plus $O(1)$ for hash lookup (with `word_set`).
-  * **Overall:** roughly $O(n^2 \times k)$, where $k$ is average word length.
+* Outer loop runs `n` times.
+* Inner loop scans up to `n` splits each time, and substring lookup is $O(k)$ for substring creation plus $O(1)$ for hash lookup (with `word_set`).
+* **Overall:** roughly $O(n^2 \times k)$, where $k$ is average word length.
 
 * **Space:**
 
-  * $O(n)$ for the `dp` array.
-  * $O(m)$ for the `word_set`, where $m$ is total dictionary size.
+* $O(n)$ for the `dp` array.
+* $O(m)$ for the `word_set`, where $m$ is total dictionary size.

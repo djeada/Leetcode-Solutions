@@ -71,7 +71,6 @@ For $\{x_i\} = [-2,\,1,\,-3,\,4,\,-1,\,2,\,1,\,-5,\,4]$:
 
 The maximum subarray is $[4, -1, 2, 1]$ with sum **6**.
 
-
 ## Complexity
 
 * **Time:** $\displaystyle O(n)$, one pass through the array.

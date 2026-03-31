@@ -185,8 +185,8 @@ IV. **Fourth seat()**
 
 - Left‐edge: dist = 0  
 - Gaps:  
- - (0,4) → mid = 2, dist = 2  
- - (4,9) → mid = 6, dist = 2  
+- (0,4) → mid = 2, dist = 2  
+- (4,9) → mid = 6, dist = 2  
 - Right‐edge: dist = 0  
 
 Tie on dist=2 → pick lower index → seat 2  
@@ -219,8 +219,8 @@ VI. **seat()** again
 
 - Left‐edge: dist = 0  
 - Gaps:  
- - (0,2) → mid=1, dist=1  
- - (2,9) → mid=5, dist=3 → best  
+- (0,2) → mid=1, dist=1  
+- (2,9) → mid=5, dist=3 → best  
 - Right‐edge: dist = 0  
 
 ```

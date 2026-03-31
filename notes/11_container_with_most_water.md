@@ -5,8 +5,8 @@
 
 **`left`, `right`**  
 - Two integer pointers into `height`:  
-  - `left` starts at `0`.  
-  - `right` starts at `len(height) - 1`.
+- `left` starts at `0`.  
+- `right` starts at `len(height) - 1`.
 
 **`max_area`**  
 - An integer tracking the largest container area seen so far.
@@ -35,18 +35,18 @@ flowchart TD
    ```
 
 2. **Two‐pointer loop**  
-   - While `left < right`:
-     1. **Compute water height**  
+- While `left < right`:
+1. **Compute water height**  
         `h = min(height[left], height[right])`  
-     2. **Compute width**  
+2. **Compute width**  
         `w = right - left`  
-     3. **Compute area**  
+3. **Compute area**  
         `area = h * w`  
-     4. **Update max**  
+4. **Update max**  
         ```python
         max_area = max(max_area, area)
         ```  
-     5. **Advance pointer**  
+5. **Advance pointer**  
         Move the pointer at the shorter line inward:
         ```python
         if height[left] < height[right]:

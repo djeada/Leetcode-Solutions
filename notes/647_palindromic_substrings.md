@@ -16,8 +16,6 @@
 
 * Pointers used by the helper `expand()` to grow around a “center” and check for palindrome matches.
 
----
-
 ## High-Level Overview
 
 This algorithm treats each possible center of a palindrome—both at characters and between characters—and expands outward as long as the characters match. Each valid expansion corresponds to one palindromic substring.
@@ -38,8 +36,6 @@ flowchart TD
   end
 ```
 
----
-
 ## Detailed Steps
 
 1. **Initialize**
@@ -49,8 +45,8 @@ flowchart TD
    self.counter = 0
    ```
 
-   * `n` records string length.
-   * `self.counter` starts at 0.
+* `n` records string length.
+* `self.counter` starts at 0.
 
 2. **Define `expand(left, right)`**
 
@@ -62,10 +58,10 @@ flowchart TD
            right += 1
    ```
 
-   * While the window `[left…right]` is within bounds and forms a palindrome (characters match), we:
+* While the window `[left…right]` is within bounds and forms a palindrome (characters match), we:
 
-     1. Count it (`self.counter += 1`),
-     2. Move outward (`left -= 1`, `right += 1`).
+1. Count it (`self.counter += 1`),
+2. Move outward (`left -= 1`, `right += 1`).
 
 3. **Iterate over all “centers”**
 
@@ -76,10 +72,10 @@ flowchart TD
        expand(left, right)
    ```
 
-   * There are `2n–1` centers:
+* There are `2n–1` centers:
 
-     * **Odd-length palindromes:** centers on characters (`center` even → `left == right`),
-     * **Even-length palindromes:** centers between characters (`center` odd → `right = left + 1`).
+* **Odd-length palindromes:** centers on characters (`center` even → `left == right`),
+* **Even-length palindromes:** centers between characters (`center` odd → `right = left + 1`).
 
 4. **Return the result**
 
@@ -87,9 +83,7 @@ flowchart TD
    return self.counter
    ```
 
-   * After all expansions, `self.counter` holds the total number of palindromic substrings.
-
----
+* After all expansions, `self.counter` holds the total number of palindromic substrings.
 
 ## Complexity
 

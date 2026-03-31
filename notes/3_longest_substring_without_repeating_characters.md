@@ -33,8 +33,8 @@ We use a **sliding‐window** technique with two pointers (`left` and `right`) p
 2. **Iterate with right pointer**
    For `right` from `0` to `len(s) - 1`:
 
-   * Let `current_char = s[right]`.
-   * **Check for duplicate inside window**
+* Let `current_char = s[right]`.
+* **Check for duplicate inside window**
 
      ```python
      if current_char in char_index and char_index[current_char] >= left:
@@ -42,12 +42,12 @@ We use a **sliding‐window** technique with two pointers (`left` and `right`) p
          # Slide `left` to one position beyond that previous index to drop the duplicate.
          left = char_index[current_char] + 1
      ```
-   * **Update the map**
+* **Update the map**
 
      ```python
      char_index[current_char] = right
      ```
-   * **Update max length**
+* **Update max length**
      Now the window is `[left..right]`, guaranteed duplicate‐free. Its length is:
 
      ```python
@@ -84,19 +84,19 @@ flowchart TD
 
 1. **`Start`**:
 
-   * Create an empty dictionary `char_index`.
-   * Set `left = 0` and `max_len = 0`.
+* Create an empty dictionary `char_index`.
+* Set `left = 0` and `max_len = 0`.
 
 2. **`Loop`** for each `right` index:
 
-   * **`SetChar`**: Read `current_char = s[right]`.
-   * **`CheckDup`**: If `current_char` is already in `char_index` and its recorded index is ≥ `left`, it means that character falls inside our current window `[left..right-1]`.
+* **`SetChar`**: Read `current_char = s[right]`.
+* **`CheckDup`**: If `current_char` is already in `char_index` and its recorded index is ≥ `left`, it means that character falls inside our current window `[left..right-1]`.
 
-     * If **yes**, move `left` to `char_index[current_char] + 1` to drop the previous occurrence—ensuring no duplicates remain.
-     * If **no**, keep `left` as-is.
-   * **`UpdateMap`**: Record or overwrite the index of `current_char` as `right`.
-   * **`ComputeLen`**: The current window is `[left..right]`, so its length is `(right - left + 1)`. Update `max_len` if this is larger than before.
-   * **`NextRight`**: Loop to the next `right` index.
+* If **yes**, move `left` to `char_index[current_char] + 1` to drop the previous occurrence—ensuring no duplicates remain.
+* If **no**, keep `left` as-is.
+* **`UpdateMap`**: Record or overwrite the index of `current_char` as `right`.
+* **`ComputeLen`**: The current window is `[left..right]`, so its length is `(right - left + 1)`. Update `max_len` if this is larger than before.
+* **`NextRight`**: Loop to the next `right` index.
 
 3. **`End`**: Once `right` has reached the end of the string, return `max_len`.
 
@@ -104,11 +104,11 @@ flowchart TD
 
 * **Time:** $O(n)$
 
-  * We make a single pass through the string of length $n$.
-  * Each character is processed once as `right` advances, and dictionary lookups/inserts (`char_index[...]`) take amortized $O(1)$.
-  * The `left` pointer only ever moves forward (never back), so each character’s index is examined at most twice: once for reading, once for removing past duplicates.
+* We make a single pass through the string of length $n$.
+* Each character is processed once as `right` advances, and dictionary lookups/inserts (`char_index[...]`) take amortized $O(1)$.
+* The `left` pointer only ever moves forward (never back), so each character’s index is examined at most twice: once for reading, once for removing past duplicates.
 
 * **Space:** $O(\min(n, k))$
 
-  * The dictionary `char_index` holds at most one entry per unique character in the current window.
-  * In the worst case (all characters distinct), space is $O(n)$. If the character set is limited (e.g., ASCII), it’s $O(k)$ for that fixed alphabet size.
+* The dictionary `char_index` holds at most one entry per unique character in the current window.
+* In the worst case (all characters distinct), space is $O(n)$. If the character set is limited (e.g., ASCII), it’s $O(k)$ for that fixed alphabet size.

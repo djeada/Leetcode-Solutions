@@ -52,4 +52,3 @@ flowchart TD
 
   for the call stack (or $O(\min(m,n))$ on average for balanced shapes).
 
-

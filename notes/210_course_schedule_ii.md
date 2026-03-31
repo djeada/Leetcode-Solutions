@@ -22,8 +22,6 @@
 - `course_order: List[int]`  
   accumulates the topological ordering of courses as we “take” them.
 
----
-
 ## What happens in `findOrder`
 
 We perform **Kahn’s topological sort**, enqueueing all courses with no prerequisites, then repeatedly “taking” one, appending it to the order, and decrementing the in‑degree of its dependents—enqueuing any that become ready. If we end up ordering all courses, return that sequence; otherwise return an empty list to signal a cycle.
@@ -70,10 +68,10 @@ flowchart TD
    ```
 3. **Process in topological order**  
    While `courses_queue` isn’t empty:
-   - Pop `current`, append it to `course_order`.  
-   - For each dependent `next_course` in `adjacency_list[current]`:
-     1. Decrement `in_degree[next_course]`.  
-     2. If it becomes zero, enqueue it.
+- Pop `current`, append it to `course_order`.  
+- For each dependent `next_course` in `adjacency_list[current]`:
+1. Decrement `in_degree[next_course]`.  
+2. If it becomes zero, enqueue it.
 4. **Return result**  
    ```python
    if len(course_order) == N:
@@ -81,8 +79,6 @@ flowchart TD
    else:
        return []            # cycle detected
    ```
-
----
 
 ## Example
 
@@ -101,20 +97,18 @@ prereq_pairs = [[1,0], [2,0], [3,1], [3,2]]
   ```
 - Queue init: `[0]`.  
 - Process order:
-  1. Pop **0**, order = `[0]`, decrement in_degree of 1 & 2 → both become 0 → enqueue `[1,2]`.  
-  2. Pop **1**, order = `[0,1]`, decrement in_degree of 3 → becomes 1.  
-  3. Pop **2**, order = `[0,1,2]`, decrement in_degree of 3 → becomes 0 → enqueue `[3]`.  
-  4. Pop **3**, order = `[0,1,2,3]`.  
+1. Pop **0**, order = `[0]`, decrement in_degree of 1 & 2 → both become 0 → enqueue `[1,2]`.  
+2. Pop **1**, order = `[0,1]`, decrement in_degree of 3 → becomes 1.  
+3. Pop **2**, order = `[0,1,2]`, decrement in_degree of 3 → becomes 0 → enqueue `[3]`.  
+4. Pop **3**, order = `[0,1,2,3]`.  
 - Since length is 4, return `[0,1,2,3]` (one valid ordering).
-
----
 
 ## Complexity
 
 - **Time:**  
-  - Building adjacency list and in‑degree: $O(N + P)$ where `P = len(prereq_pairs)`.  
-  - Each course is enqueued/dequeued once, and each edge is considered exactly once.  
-  - **Overall:** $O(N + P)$.
+- Building adjacency list and in‑degree: $O(N + P)$ where `P = len(prereq_pairs)`.  
+- Each course is enqueued/dequeued once, and each edge is considered exactly once.  
+- **Overall:** $O(N + P)$.
 
 - **Space:**  
-  - $O(N + P)$ for the adjacency list and in-degree array, plus $O(N)$ for the queue and output list.
+- $O(N + P)$ for the adjacency list and in-degree array, plus $O(N)$ for the queue and output list.

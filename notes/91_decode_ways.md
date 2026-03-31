@@ -31,13 +31,13 @@ We use a **sliding-window DP** that only keeps the last two DP values (`dp[i-2]`
    ```
 
 2. **Iterate through each character** (from `idx = 1` to `len(s)-1`):
-   - **Reset** `ways_current = 0`.
-   - **Single-digit check:**  
+- **Reset** `ways_current = 0`.
+- **Single-digit check:**  
      If `s[idx] != '0'`, then the digit at `idx` can stand alone.  
      ```python
      ways_current += ways_one_back
      ```
-   - **Two-digit check:**  
+- **Two-digit check:**  
      Parse  
      ```python
      two_digit = int(s[idx-1:idx+1])
@@ -46,12 +46,12 @@ We use a **sliding-window DP** that only keeps the last two DP values (`dp[i-2]`
      ```python
      ways_current += ways_two_back
      ```
-   - **Slide window:**  
+- **Slide window:**  
      Shift the DP window forward:
      ```python
      ways_two_back, ways_one_back = ways_one_back, ways_current
      ```
-   - **Early exit:**  
+- **Early exit:**  
      If `ways_one_back == 0`, no valid decodings remain for any extension → return `0`.
 
 3. **Final answer**  

@@ -40,20 +40,20 @@ flowchart TD
    self.pre_idx = 0
    ```
 3. **Recursive helper(left, right)**  
-   - **Base case:** if `left > right`, no nodes remain → return `None`.  
-   - **Root selection:**  
+- **Base case:** if `left > right`, no nodes remain → return `None`.  
+- **Root selection:**  
      ```python
      root_val = preorder[self.pre_idx]
      root = TreeNode(root_val)
      self.pre_idx += 1
      ```  
-   - **Split inorder:**  
+- **Split inorder:**  
      ```python
      in_idx = idx_map[root_val]
      ```  
-   - **Recurse left:** `helper(left, in_idx - 1)`  
-   - **Recurse right:** `helper(in_idx + 1, right)`  
-   - **Return** the constructed `root`.
+- **Recurse left:** `helper(left, in_idx - 1)`  
+- **Recurse right:** `helper(in_idx + 1, right)`  
+- **Return** the constructed `root`.
 
 ## Complexity
 
@@ -61,5 +61,5 @@ flowchart TD
   Each of the n nodes is created once, and lookups in `idx_map` are $O(1)$.
 
 - **Space:** $O(n)$  
-  - The `idx_map` uses $O(n)$ extra space.  
-  - Recursion stack may go $O(n)$ deep in the worst (skewed) tree.
+- The `idx_map` uses $O(n)$ extra space.  
+- Recursion stack may go $O(n)$ deep in the worst (skewed) tree.

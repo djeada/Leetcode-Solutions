@@ -9,9 +9,9 @@
 
 * **`n: int`** — size of the lowercase alphabet, i.e. $\text{ord}(\texttt{'z'}) - \text{ord}(\texttt{'a'}) + 1 = 26$.
 * **`counter: List[int]`** — frequency-difference array of length 26, where `counter[i]` tracks the net count of the character with ordinal offset $i$ from `'a'`.
-  * Positive → character appears more in `s` than `t`.
-  * Negative → character appears more in `t` than `s`.
-  * Zero → character counts match.
+* Positive → character appears more in `s` than `t`.
+* Negative → character appears more in `t` than `s`.
+* Zero → character counts match.
 
 ## Overall Approach
 

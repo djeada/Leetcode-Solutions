@@ -54,8 +54,6 @@ flowchart TD
 
 This single pass over the sorted list runs in $O(n)$.
 
----
-
 ### III. Merging Overlaps
 
 If $O$ is non-empty, define

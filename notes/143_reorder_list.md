@@ -4,8 +4,8 @@
 
 * A node in a singly-linked list with attributes:
 
-  * `val`: the integer value stored in the node.
-  * `next`: a reference to the next `ListNode` (or `None`).
+* `val`: the integer value stored in the node.
+* `next`: a reference to the next `ListNode` (or `None`).
 
 **`head`**
 
@@ -15,23 +15,23 @@
 
 * Two pointers used to find the midpoint of the list:
 
-  * `slow` moves one step at a time.
-  * `fast` moves two steps at a time.
+* `slow` moves one step at a time.
+* `fast` moves two steps at a time.
 
 **`prev`, `curr`, `nxt`**
 
 * Temporary pointers used during the in-place reversal of the second half:
 
-  * `curr`: the node currently being processed.
-  * `prev`: the head of the partially reversed list.
-  * `nxt`: stores `curr.next` before re-linking.
+* `curr`: the node currently being processed.
+* `prev`: the head of the partially reversed list.
+* `nxt`: stores `curr.next` before re-linking.
 
 **`first`, `second`**
 
 * Pointers used to merge the two halves:
 
-  * `first` traverses the first (front) half.
-  * `second` traverses the reversed second half.
+* `first` traverses the first (front) half.
+* `second` traverses the reversed second half.
 
 ## What happens in `reorderList()`
 
@@ -53,7 +53,7 @@ flowchart TD
        return
    ```
 
-   * If the list has fewer than 3 nodes, there's nothing to reorder.
+* If the list has fewer than 3 nodes, there's nothing to reorder.
 
 2. **Find the midpoint**
 
@@ -64,7 +64,7 @@ flowchart TD
        fast = fast.next.next
    ```
 
-   * After the loop, `slow` points to the midpoint (end of first half).
+* After the loop, `slow` points to the midpoint (end of first half).
 
 3. **Split the list**
 
@@ -73,7 +73,7 @@ flowchart TD
    slow.next = None
    ```
 
-   * Detach the second half starting from `second`.
+* Detach the second half starting from `second`.
 
 4. **Reverse the second half**
 
@@ -87,7 +87,7 @@ flowchart TD
        curr = nxt
    ```
 
-   * Standard in-place reversal: `prev` becomes head of the reversed second list.
+* Standard in-place reversal: `prev` becomes head of the reversed second list.
 
 5. **Merge the two halves**
 
@@ -105,16 +105,16 @@ flowchart TD
        second = tmp_second
    ```
 
-   * Alternately weave nodes from `first` and `second` lists until all from the second half are merged.
+* Alternately weave nodes from `first` and `second` lists until all from the second half are merged.
 
 ## Complexity
 
 * **Time:** $O(n)$
 
-  * Finding midpoint: $O(n)$
-  * Reversing second half: $O(n/2)$
-  * Merging halves: $O(n)$
+* Finding midpoint: $O(n)$
+* Reversing second half: $O(n/2)$
+* Merging halves: $O(n)$
 
 * **Space:** $O(1)$
 
-  * All operations are done in-place with a fixed number of pointers.
+* All operations are done in-place with a fixed number of pointers.

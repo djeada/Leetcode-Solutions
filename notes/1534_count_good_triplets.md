@@ -8,8 +8,6 @@
 - `n`: integer, the length of `arr` (`n = len(arr)`).  
 - `good_triplet_count`: integer counter, initialized to `0`, storing how many “good” triplets we’ve found.
 
----
-
 ## What happens in `countGoodTriplets`?
 
 We simply **enumerate** every triple of indices `(i, j, k)` with `i < j < k`, test the three distance conditions, and count those that satisfy all.
@@ -72,8 +70,6 @@ After all loops finish:
 return good_triplet_count
 ```
 
----
-
 ## Example
 
 ```python
@@ -84,7 +80,7 @@ a, b, c = 7, 2, 3
 All triples `(i, j, k)` with `i<j<k` are:
 
 - `(0,1,2)`: values `(3,0,1)`  
-  - |3−0|=3 ≤7; |0−1|=1 ≤2; |3−1|=2 ≤3 → **good**
+- |3−0|=3 ≤7; |0−1|=1 ≤2; |3−1|=2 ≤3 → **good**
 
 - `(0,1,3)`: `(3,0,1)` same distances → **good**
 
@@ -98,13 +94,11 @@ All triples `(i, j, k)` with `i<j<k` are:
 
 …and so on.  In total, there are **4** good triplets.
 
----
-
 ## Complexity
 
 - **Time:**  
-  - We have three nested loops in the worst case → $O(n³)$.  
-  - The early `continue` after checking the first condition can prune some work but doesn’t change the cubic worst‑case.
+- We have three nested loops in the worst case → $O(n³)$.  
+- The early `continue` after checking the first condition can prune some work but doesn’t change the cubic worst‑case.
 
 - **Space:**  
-  - $O(1)$ extra space (only counters and loop indices).  
+- $O(1)$ extra space (only counters and loop indices).  

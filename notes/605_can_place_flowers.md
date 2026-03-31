@@ -2,8 +2,8 @@
 
 **`flowerbed`**  
 - A list of integers `0` or `1`, length `m`.  
-  - `0` means empty plot.  
-  - `1` means already planted.
+- `0` means empty plot.  
+- `1` means already planted.
 
 **`padded`**  
 - A new list of length `m+2`:  
@@ -98,17 +98,17 @@ n = 1
 1. **Pad** → `[0, 1, 0, 0, 0, 1, 0]`  
 2. **Init** → `prev = True`, `curr = False`, `total = 0`  
 3. **Iterate** over `[0, 0, 0, 1, 0]`:  
-   - next=0 → `(True, False, 0)` → no plant → shift → `prev=False, curr=True`  
-   - next=0 → `(False, True, 0)` → no plant → shift → `prev=True, curr=True`  
-   - next=0 → `(True, True, 0)` → **plant!** → `total=1`, `prev=False, curr=True`  
-   - Since `total (1) >= n (1)`, return **True**.
+- next=0 → `(True, False, 0)` → no plant → shift → `prev=False, curr=True`  
+- next=0 → `(False, True, 0)` → no plant → shift → `prev=True, curr=True`  
+- next=0 → `(True, True, 0)` → **plant!** → `total=1`, `prev=False, curr=True`  
+- Since `total (1) >= n (1)`, return **True**.
 
 ## Complexity
 
 - **Time:**  
-  - Padding: $O(m)$.  
-  - Single pass over `padded`: $O(m)$.  
-  - **Overall:** $O(m)$.
+- Padding: $O(m)$.  
+- Single pass over `padded`: $O(m)$.  
+- **Overall:** $O(m)$.
 
 - **Space:**  
-  - $O(m)$ for the `padded` list, plus $O(1)$ extra.
+- $O(m)$ for the `padded` list, plus $O(1)$ extra.

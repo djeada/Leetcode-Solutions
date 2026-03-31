@@ -33,8 +33,8 @@ flowchart TD
    ```
 
 2. Iterate from `1` through `n`. For each `i`, decompose it into two parts:
-   - `i >> 1` — all bits except the least-significant bit (a number we've already solved).
-   - `i & 1` — the least-significant bit itself (`0` or `1`).
+- `i >> 1` — all bits except the least-significant bit (a number we've already solved).
+- `i & 1` — the least-significant bit itself (`0` or `1`).
 
    ```python
    for i in range(1, n + 1):
