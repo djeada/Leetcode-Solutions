@@ -31,11 +31,11 @@ flowchart TD
 ```
 
 1. **DFS Preorder**  
-   - Visit node → append its value.  
-   - Recurse left → recurse right.  
-   - At each `None`, append `'#'` to mark nulls.
+- Visit node → append its value.  
+- Recurse left → recurse right.  
+- At each `None`, append `'#'` to mark nulls.
 2. **Join**  
-   - Return `','.join(vals)`, e.g. `"1,2,#,#,3,4,#,#,5,#,#"`.
+- Return `','.join(vals)`, e.g. `"1,2,#,#,3,4,#,#,5,#,#"`.
 
 ## What happens in `deserialize()`?
 
@@ -56,18 +56,18 @@ flowchart TD
 ```
 
 1. **Tokenize**  
-   - Split the string into a queue of values and null markers.
+- Split the string into a queue of values and null markers.
 2. **Rebuild with DFS**  
-   - Read one token at a time (`self.i`), creating a new `TreeNode` for numbers or returning `None` for `'#'`.
-   - Recursively assign `left` then `right`.
+- Read one token at a time (`self.i`), creating a new `TreeNode` for numbers or returning `None` for `'#'`.
+- Recursively assign `left` then `right`.
 3. **Return**  
-   - The reconstructed tree’s root.
+- The reconstructed tree’s root.
 
 ## Complexity
 
 - **Time:** $O(N)$ for both methods, where $N$ is the number of nodes.  
-  - Each node and null marker is visited exactly once in serialize and once in deserialize.
+- Each node and null marker is visited exactly once in serialize and once in deserialize.
 - **Space:** $O(N)$ extra.  
-  - The `vals` (and resulting string) size is $2N+1$ tokens worst‐case.  
-  - The recursion stack can go $O(N)$ deep in a skewed tree.
+- The `vals` (and resulting string) size is $2N+1$ tokens worst‐case.  
+- The recursion stack can go $O(N)$ deep in a skewed tree.
  

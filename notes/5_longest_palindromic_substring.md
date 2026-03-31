@@ -20,8 +20,6 @@
 
 * Local string inside `expand()` that builds and returns the palindrome centered at `(left, right)`.
 
----
-
 ## High-Level Overview
 
 This algorithm examines every possible palindrome center (character or between characters), expands outward to build the maximal palindrome at that center, and tracks the longest one seen.
@@ -43,8 +41,6 @@ flowchart TD
   end
 ```
 
----
-
 ## Detailed Steps
 
 1. **Initialize**
@@ -54,8 +50,8 @@ flowchart TD
    result = ""
    ```
 
-   * `n` stores the string length.
-   * `result` starts empty.
+* `n` stores the string length.
+* `result` starts empty.
 
 2. **Define `expand(left, right)`**
 
@@ -79,9 +75,9 @@ flowchart TD
        return _result
    ```
 
-   * **Odd-length palindromes** start with a single character (`left == right`).
-   * **Even-length palindromes** start with a two‐character match; otherwise return `""`.
-   * Expand outward while characters match, building `_result`.
+* **Odd-length palindromes** start with a single character (`left == right`).
+* **Even-length palindromes** start with a two‐character match; otherwise return `""`.
+* Expand outward while characters match, building `_result`.
 
 3. **Iterate all centers**
 
@@ -94,16 +90,14 @@ flowchart TD
            result = substring
    ```
 
-   * `2n–1` possible centers cover both odd/even palindromes.
-   * Update `result` whenever a longer palindrome is found.
+* `2n–1` possible centers cover both odd/even palindromes.
+* Update `result` whenever a longer palindrome is found.
 
 4. **Return the longest palindrome**
 
    ```python
    return result
    ```
-
----
 
 ## Complexity
 
@@ -116,4 +110,4 @@ flowchart TD
 
 * **Space:**
 
-  * $O(1)$ extra space for pointers and accumulators (ignoring the input and the space for the returned substring).
+* $O(1)$ extra space for pointers and accumulators (ignoring the input and the space for the returned substring).

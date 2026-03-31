@@ -151,8 +151,8 @@ root ─ o ─ a ─ t ─ h  (word="oath")
 - Trie root has child `'o'` → descend.
 - (1,0) = `'e'` — child `'o'` has no `'e'` child → prune.
 - (0,1) = `'a'` — child `'o'` has `'a'` child → descend.
-  - (1,1) = `'t'` — `'a'` has `'t'` child → descend.
-    - (2,1) = `'h'` — `'t'` has `'h'` child with `word="oath"` → **collect "oath"**.
+- (1,1) = `'t'` — `'a'` has `'t'` child → descend.
+- (2,1) = `'h'` — `'t'` has `'h'` child with `word="oath"` → **collect "oath"**.
 
 **DFS from cell (1,1) = 't':**
 
@@ -176,6 +176,6 @@ Result: `["oath", "eat"]`.
   In practice, Trie pruning makes this significantly faster.
 
 * **Space:**
-  - The Trie stores up to $O(W)$ nodes.
-  - The DFS recursion stack is at most $O(L)$ deep.
-  - Overall: $O(W + L)$.
+- The Trie stores up to $O(W)$ nodes.
+- The DFS recursion stack is at most $O(L)$ deep.
+- Overall: $O(W + L)$.

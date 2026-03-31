@@ -16,8 +16,8 @@ We seek the length of the longest strictly increasing subsequence (LIS) by maint
 1. **Invariant**: after processing the first $j$ elements, `tails` is strictly increasing, and its length equals the LIS within those $j$ elements.
 2. **Update Rule**: for each new element $x$, find the first index $i$ in `tails` with `tails[i] ≥ x` (binary search).
 
-   * If no such index exists, **append** $x$ (increasing the LIS length).
-   * Otherwise **replace** `tails[i]` with $x$, improving the potential for longer subsequences later.
+* If no such index exists, **append** $x$ (increasing the LIS length).
+* Otherwise **replace** `tails[i]` with $x$, improving the potential for longer subsequences later.
 
 ```mermaid
 flowchart TD

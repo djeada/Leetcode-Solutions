@@ -16,8 +16,6 @@
 - `processed_count`: how many nodes we’ve dequeued (to detect cycles).  
 - `max_color_value`: the best color‑count seen anywhere, which we’ll return.
 
----
-
 ## What happens in `largestPathValue`
 
 We perform a **topological traversal** of the DAG, carrying along for each node `u` a vector `dp_counts[u]` of the best color‑counts for paths ending at `u`. When visiting `u`, we increment the count for its own color, update our global maximum, then “push” these counts forward to its neighbors by taking pairwise maxima. If we can’t process all nodes (cycle detected), we return `-1`.
@@ -67,14 +65,14 @@ flowchart TD
    ```
 4. **Process in topological order**  
    While `topo_queue` not empty:
-   - Pop `u`, increment `processed_count`.  
-   - Compute its color index:
+- Pop `u`, increment `processed_count`.  
+- Compute its color index:
      ```python
      char_idx = ord(colors[u]) - ord('a')
      dp_counts[u][char_idx] += 1
      max_color_value = max(max_color_value, dp_counts[u][char_idx])
      ```
-   - For each neighbor `v` in `graph[u]`, update:
+- For each neighbor `v` in `graph[u]`, update:
      ```python
      for c in range(26):
          dp_counts[v][c] = max(dp_counts[v][c], dp_counts[u][c])
@@ -85,8 +83,6 @@ flowchart TD
 5. **Cycle check**  
    If `processed_count < N`, a cycle exists → **return** `-1`.  
    Otherwise, **return** `max_color_value`.
-
----
 
 ## Example
 
@@ -116,15 +112,13 @@ edges  = [[0,1],[0,2],[2,3],[3,4]]
 
 No cycle detected; **answer = 3** (the longest “a”‑chain along path 0→2→3→4).
 
----
-
 ## Complexity
 
 - **Time:**  
-  - Building the graph and in‑degree: $O(N + E)$.  
-  - Kahn’s loop processes each node once and each edge once. For each edge we do a 26‑length scan → $O(26 \cdot E)$ = $O(E)$.  
-  - **Total:** $O(N + E)$.
+- Building the graph and in‑degree: $O(N + E)$.  
+- Kahn’s loop processes each node once and each edge once. For each edge we do a 26‑length scan → $O(26 \cdot E)$ = $O(E)$.  
+- **Total:** $O(N + E)$.
 
 - **Space:**  
-  - $O(N + E)$ for the adjacency list.  
-  - **$O(26 \cdot N)$ = $O(N)$** for the `dp_counts` table.
+- $O(N + E)$ for the adjacency list.  
+- **$O(26 \cdot N)$ = $O(N)$** for the `dp_counts` table.

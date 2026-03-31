@@ -18,10 +18,8 @@
 
 **DP table**  
 - `dp_table: List[List[int]]` of size `(K+1)×(K+1)`, where `K = len(_keys)`.  
-  - `dp_table[f1][f2]` = minimum additional cost to type the **remaining** suffix when finger1 is on key index `f1` and finger2 is on key index `f2`.  
-  - Index `K` in either dimension means that finger is “off” the keyboard (no cost to bring it on first use).
-
----
+- `dp_table[f1][f2]` = minimum additional cost to type the **remaining** suffix when finger1 is on key index `f1` and finger2 is on key index `f2`.  
+- Index `K` in either dimension means that finger is “off” the keyboard (no cost to bring it on first use).
 
 ## What happens in `minimumDistance(word)`?
 
@@ -47,25 +45,25 @@ flowchart TD
 ```
 
 1. **Initialization**  
-   - Create a `(K+1)×(K+1)` table of zeros.  
-   - `dp_table[f1][f2]` will represent the _cost to finish_ once you’ve typed all characters _after_ the current one, given finger1 at `f1` and finger2 at `f2`.
+- Create a `(K+1)×(K+1)` table of zeros.  
+- `dp_table[f1][f2]` will represent the _cost to finish_ once you’ve typed all characters _after_ the current one, given finger1 at `f1` and finger2 at `f2`.
 
 2. **Process each character in reverse**  
-   - **`target`** = the numeric index of the current character.  
-   - **Snapshot** the current `dp_table` values in row `target` and column `target` so we don’t overwrite them mid‑compute.
+- **`target`** = the numeric index of the current character.  
+- **Snapshot** the current `dp_table` values in row `target` and column `target` so we don’t overwrite them mid‑compute.
 
 3. **Transition** for every possible `(finger1_pos, finger2_pos)`:  
-   - **Option A**: move **finger 1** to `target`  
+- **Option A**: move **finger 1** to `target`  
      ```
      cost_if_f1 = prev_row[finger2_pos] 
                   + move_cost(finger1_pos → target)
      ```
-   - **Option B**: move **finger 2** to `target`  
+- **Option B**: move **finger 2** to `target`  
      ```
      cost_if_f2 = prev_col[finger1_pos] 
                   + move_cost(finger2_pos → target)
      ```
-   - Pick the cheaper of the two.
+- Pick the cheaper of the two.
 
 4. **Final answer**  
    After processing all characters, both fingers start “off” the keyboard, so the result is
@@ -73,16 +71,14 @@ flowchart TD
    return dp_table[off_index][off_index]
    ```
 
----
-
 ## Example
 
 Consider **word = "CAB"** on our 6‑column keyboard:
 
 - Positions:  
-  - `C` at (0,2)  
-  - `A` at (0,0)  
-  - `B` at (0,1)  
+- `C` at (0,2)  
+- `A` at (0,0)  
+- `B` at (0,1)  
 
 **Intuition**:  
 1. **Type “C”**: move a finger from off → C costs **0**.  
@@ -93,14 +89,12 @@ Total minimum movement = **1**.
 
 Indeed, the DP returns **1**.
 
----
-
 ## Complexity
 
 - **Time:**  
-  - Let `n = len(word)`, `K = 26` (number of keys).  
-  - For each of the `n` characters, we do a double loop over `(K+1)×(K+1)` states → $O(n \cdot K²)$.  
-  - Since `K` is constant (26 letters), this is effectively $O(n)$.
+- Let `n = len(word)`, `K = 26` (number of keys).  
+- For each of the `n` characters, we do a double loop over `(K+1)×(K+1)` states → $O(n \cdot K²)$.  
+- Since `K` is constant (26 letters), this is effectively $O(n)$.
 
 - **Space:**  
-  - The DP table is size **(K+1)²**, i.e. $O(1)$ with respect to `n` (constant auxiliary space).
+- The DP table is size **(K+1)²**, i.e. $O(1)$ with respect to `n` (constant auxiliary space).

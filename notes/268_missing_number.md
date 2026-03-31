@@ -65,33 +65,33 @@ flowchart TD
    x = n
    ```
 
-   * Start with `x` holding the value `n`.
+* Start with `x` holding the value `n`.
 
 2. **Iterate and XOR**
    For each pair `(i, num)`:
 
-   * XOR in the index `i`.
-   * XOR in the array value `num`.
-   * Because $a \oplus a = 0$ and $0 \oplus b = b$, every index and its matching number cancel out, leaving only the missing number.
+* XOR in the index `i`.
+* XOR in the array value `num`.
+* Because $a \oplus a = 0$ and $0 \oplus b = b$, every index and its matching number cancel out, leaving only the missing number.
 
 3. **Return**
 
-   * After processing all entries, `x` equals the one number in $[0, n]$ that never got cancelled.
+* After processing all entries, `x` equals the one number in $[0, n]$ that never got cancelled.
 
 ## Complexity
 
 * **Time:**
 
-  * **Option 1:**
+* **Option 1:**
 
-    * Summing array: $O(n)$
-    * Constant-time arithmetic: $O(1)$
-    * **Total:** $O(n)$
-  * **Option 2:**
+* Summing array: $O(n)$
+* Constant-time arithmetic: $O(1)$
+* **Total:** $O(n)$
+* **Option 2:**
 
-    * Single pass with XOR per element: $O(n)$
-    * **Total:** $O(n)$
+* Single pass with XOR per element: $O(n)$
+* **Total:** $O(n)$
 
 * **Space:**
 
-  * **Both options:** $O(1)$ extra space (only a few integer variables).
+* **Both options:** $O(1)$ extra space (only a few integer variables).

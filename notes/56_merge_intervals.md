@@ -40,13 +40,13 @@ flowchart TD
 
 4. **Iterate and merge**  
    For each remaining interval `pair`:
-   - **Overlap** — `merged[-1][1] >= pair[0]`:  
+- **Overlap** — `merged[-1][1] >= pair[0]`:  
      The current interval starts before (or exactly when) the last merged interval ends, so they overlap. Extend the end if needed:
      ```python
      if pair[1] > merged[-1][1]:
          merged[-1][1] = pair[1]
      ```
-   - **No overlap** — the current interval starts after the last merged interval ends:
+- **No overlap** — the current interval starts after the last merged interval ends:
      ```python
      merged.append(pair)
      ```

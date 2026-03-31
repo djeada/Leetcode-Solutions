@@ -8,14 +8,12 @@
 
 * Integer indices bounding the current search range within **nums**.
 
-  * **low** starts at 0.
-  * **high** starts at `len(nums) - 1`.
+* **low** starts at 0.
+* **high** starts at `len(nums) - 1`.
 
 **`middle`**
 
 * Integer index computed as the midpoint of **low** and **high** in each iteration.
-
----
 
 ## What happens in `findMin()`
 
@@ -41,7 +39,7 @@ flowchart TD
    low, high = 0, len(nums) - 1
    ```
 
-   * Define the search interval across the entire array.
+* Define the search interval across the entire array.
 
 2. **Check for no rotation**
 
@@ -50,7 +48,7 @@ flowchart TD
        return nums[low]
    ```
 
-   * If the first element is ≤ the last, the array is already fully sorted and the minimum is at index **low**.
+* If the first element is ≤ the last, the array is already fully sorted and the minimum is at index **low**.
 
 3. **Binary search for pivot**
 
@@ -63,10 +61,10 @@ flowchart TD
            high = middle
    ```
 
-   * Compute **middle** of current range.
-   * **If** the middle element is greater than the element at **high**, the smallest value lies to the right of **middle**, so shift **low** to `middle + 1`.
-   * **Else**, the minimum is at **middle** or to its left, so move **high** to `middle`.
-   * Repeat until **low** meets **high**.
+* Compute **middle** of current range.
+* **If** the middle element is greater than the element at **high**, the smallest value lies to the right of **middle**, so shift **low** to `middle + 1`.
+* **Else**, the minimum is at **middle** or to its left, so move **high** to `middle`.
+* Repeat until **low** meets **high**.
 
 4. **Return the minimum**
 
@@ -74,16 +72,14 @@ flowchart TD
    return nums[low]
    ```
 
-   * At termination, **low == high**, both pointing to the smallest element.
-
----
+* At termination, **low == high**, both pointing to the smallest element.
 
 ## Complexity
 
 * **Time:** $O(\log n)$
 
-  * Each iteration halves the search interval.
+* Each iteration halves the search interval.
 
 * **Space:** $O(1)$
 
-  * Only a fixed number of index variables are used.
+* Only a fixed number of index variables are used.

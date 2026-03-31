@@ -8,8 +8,8 @@
 
 * A node in a singly-linked list with attributes:
 
-  * **val**: integer stored in the node
-  * **next**: reference to the next node (or **None**)
+* **val**: integer stored in the node
+* **next**: reference to the next node (or **None**)
 
 **`dummy`**
 
@@ -27,11 +27,9 @@
   (node_val, list_index, node_pointer)
   ```
 
-  * **node\_val**: the value at the current node (for ordering)
-  * **list\_index**: the index of the originating list (to break ties)
-  * **node\_pointer**: reference to the current `ListNode`
-
----
+* **node\_val**: the value at the current node (for ordering)
+* **list\_index**: the index of the originating list (to break ties)
+* **node\_pointer**: reference to the current `ListNode`
 
 ## What happens in mergeKLists()
 
@@ -68,7 +66,7 @@ flowchart TD
            heapq.heappush(heap, (head.val, i, head))
    ```
 
-   * For each non-empty input list, push its head node into the heap, keyed by node value so the smallest appears first. Ties break by list index.
+* For each non-empty input list, push its head node into the heap, keyed by node value so the smallest appears first. Ties break by list index.
 
 3. **Merge by repeatedly extracting the minimum**
 
@@ -81,9 +79,9 @@ flowchart TD
            heapq.heappush(heap, (node.next.val, i, node.next))
    ```
 
-   * Pop the tuple with the smallest `node.val` from the heap.
-   * Attach that node to the merged list (`tail.next = node`) and advance **tail**.
-   * If the extracted node has a successor, push the successor into the heap so its value will be considered in the next iterations.
+* Pop the tuple with the smallest `node.val` from the heap.
+* Attach that node to the merged list (`tail.next = node`) and advance **tail**.
+* If the extracted node has a successor, push the successor into the heap so its value will be considered in the next iterations.
 
 4. **Return the merged list head**
 
@@ -91,17 +89,15 @@ flowchart TD
    return dummy.next
    ```
 
-   * `dummy.next` points to the head of the fully merged, sorted list.
-
----
+* `dummy.next` points to the head of the fully merged, sorted list.
 
 ## Complexity
 
 * **Time:** $O(N \log k)$
 
-  * N = total number of nodes across all k lists.
-  * Each node is pushed and popped exactly once from a heap of size at most k, costing $O(\log k)$ per operation.
+* N = total number of nodes across all k lists.
+* Each node is pushed and popped exactly once from a heap of size at most k, costing $O(\log k)$ per operation.
 
 * **Space:** $O(k)$
 
-  * The heap holds at most one node from each list at any time.
+* The heap holds at most one node from each list at any time.

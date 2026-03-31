@@ -104,7 +104,6 @@ S:
  1   2
 ```
 
-
 * At $u=3$, $\mathrm{Same}(3,S)$ fails (values differ).
 * Recurse to $u=4$: now $\mathrm{Same}(4,S)$ holds, since both structure and values match exactly.
   → return **True**.

@@ -44,7 +44,7 @@ flowchart TD
 ```
 
 1. **Handle small `n`**  
-   - If `n` is 1 or 2, return `n` directly.
+- If `n` is 1 or 2, return `n` directly.
 
 2. **Initialize**  
    ```python
@@ -53,17 +53,17 @@ flowchart TD
    ```
 
 3. **Iterate** from stair 3 up to `n`:
-   - Compute  
+- Compute  
      ```python
      ways_current = ways_one_back + ways_two_back
      ```
-   - Slide the window forward:  
+- Slide the window forward:  
      ```python
      ways_two_back, ways_one_back = ways_one_back, ways_current
      ```
 
 4. **Return**  
-   - After the loop, `ways_one_back` holds the number of ways to reach stair `n`.
+- After the loop, `ways_one_back` holds the number of ways to reach stair `n`.
 
 ## Complexity
 

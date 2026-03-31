@@ -12,15 +12,13 @@
 
 * Integer indices bounding the current search range within **nums**.
 
-  * **low** starts at 0.
-  * **high** starts at len(**nums**) − 1.
+* **low** starts at 0.
+* **high** starts at len(**nums**) − 1.
 
 **`i`**, **`middle`**
 
 * **i** is the midpoint index `(low + high) // 2`.
 * **middle** is the value `nums[i]`.
-
----
 
 ## What happens in search()
 
@@ -51,7 +49,7 @@ flowchart TD
    low, high = 0, len(nums) - 1
    ```
 
-   * Define the initial search interval across the entire array.
+* Define the initial search interval across the entire array.
 
 2. **Binary search loop**
 
@@ -59,7 +57,7 @@ flowchart TD
    while low <= high:
    ```
 
-   * Continue as long as the interval is valid.
+* Continue as long as the interval is valid.
 
 3. **Compute midpoint**
 
@@ -68,7 +66,7 @@ flowchart TD
    middle = nums[i]
    ```
 
-   * **i** is the center index; **middle** its value.
+* **i** is the center index; **middle** its value.
 
 4. **Check for match**
 
@@ -77,7 +75,7 @@ flowchart TD
        return i
    ```
 
-   * If found, return the index immediately.
+* If found, return the index immediately.
 
 5. **Determine which half is sorted**
 
@@ -88,30 +86,30 @@ flowchart TD
        # Right half from i to high is sorted
    ```
 
-   * Compare **nums\[low]** to **middle** to see if the left segment is in ascending order.
+* Compare **nums\[low]** to **middle** to see if the left segment is in ascending order.
 
 6. **Decide which half to search**
 
-   * **If left half is sorted**:
+* **If left half is sorted**:
 
-     * If **target** lies between **nums\[low]** and **middle**, narrow to left:
+* If **target** lies between **nums\[low]** and **middle**, narrow to left:
 
        ```python
        high = i - 1
        ```
-     * Otherwise, search right:
+* Otherwise, search right:
 
        ```python
        low = i + 1
        ```
-   * **If right half is sorted**:
+* **If right half is sorted**:
 
-     * If **target** lies between **middle** and **nums\[high]**, narrow to right:
+* If **target** lies between **middle** and **nums\[high]**, narrow to right:
 
        ```python
        low = i + 1
        ```
-     * Otherwise, search left:
+* Otherwise, search left:
 
        ```python
        high = i - 1
@@ -123,16 +121,14 @@ flowchart TD
    return -1
    ```
 
-   * When **low** exceeds **high**, the target is not in the array.
-
----
+* When **low** exceeds **high**, the target is not in the array.
 
 ## Complexity
 
 * **Time:** $O(\log n)$
 
-  * Each iteration halves the search space.
+* Each iteration halves the search space.
 
 * **Space:** $O(1)$
 
-  * Uses only a fixed number of index and value variables.
+* Uses only a fixed number of index and value variables.

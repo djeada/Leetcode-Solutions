@@ -67,7 +67,6 @@ $$
 
 After these four sub-steps, one bit of the original integer has been moved to its mirrored position in `result`.
 
-
 ## Example
 
 Reverse the 8-bit pattern for clarity (generalizes to 32 bits identically).

@@ -21,8 +21,6 @@
 * **start**: integer index in **candidates** indicating which elements are still eligible for use (ensures combinations are non‑decreasing and avoids duplicates).
 * **remaining\_target**: the sum still needed to reach **target**.
 
----
-
 ## What happens in `combinationSum()`
 
 ```mermaid
@@ -57,7 +55,7 @@ flowchart TD
    candidates.sort()
    ```
 
-   * Ensures that once a candidate exceeds the remaining target, all later ones will, too.
+* Ensures that once a candidate exceeds the remaining target, all later ones will, too.
 
 2. **Prepare results container**
 
@@ -83,11 +81,11 @@ flowchart TD
            path.pop()
    ```
 
-   * **Base case (success):** `remaining_target == 0` → record a copy of **path** in **results**.
-   * **Base case (failure):** `remaining_target < 0` → overshot, backtrack immediately.
-   * **Loop over choices:** from index **start** onward, to allow reuse of the same element and enforce non-decreasing order within **path**.
-   * **Prune:** if the current candidate exceeds what's left, break the loop (because sorted).
-   * **Choose → Recurse → Un-choose:** standard backtracking pattern.
+* **Base case (success):** `remaining_target == 0` → record a copy of **path** in **results**.
+* **Base case (failure):** `remaining_target < 0` → overshot, backtrack immediately.
+* **Loop over choices:** from index **start** onward, to allow reuse of the same element and enforce non-decreasing order within **path**.
+* **Prune:** if the current candidate exceeds what's left, break the loop (because sorted).
+* **Choose → Recurse → Un-choose:** standard backtracking pattern.
 
 4. **Initial call and return**
 
@@ -96,19 +94,17 @@ flowchart TD
    return results
    ```
 
-   * Start with an empty path and the full target; return all found combinations.
-
----
+* Start with an empty path and the full target; return all found combinations.
 
 ## Complexity
 
 * **Time:** Exponential in the worst case.
 
-  * The depth of recursion can go up to `target / min(candidates)`.
-  * At each level, you may choose among up to `len(candidates)` options.
-  * Upper bound roughly $O(k^(T/m))$, where k = number of candidates, T = target, m = minimum candidate value.
+* The depth of recursion can go up to `target / min(candidates)`.
+* At each level, you may choose among up to `len(candidates)` options.
+* Upper bound roughly $O(k^(T/m))$, where k = number of candidates, T = target, m = minimum candidate value.
 
 * **Space:**
 
-  * $O(T/m)$ recursive call stack depth.
-  * $O(\#solutions \times average_solution_length)$ for storing all valid combinations in **results**.
+* $O(T/m)$ recursive call stack depth.
+* $O(\#solutions \times average_solution_length)$ for storing all valid combinations in **results**.

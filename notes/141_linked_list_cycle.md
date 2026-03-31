@@ -12,10 +12,8 @@
 
 * Two pointers into the list:
 
-  * `slow` moves one node at a time.
-  * `fast` moves two nodes at a time.
-
----
+* `slow` moves one node at a time.
+* `fast` moves two nodes at a time.
 
 ## What happens in `hasCycle()`
 
@@ -46,40 +44,38 @@ flowchart TD
 
 1. **Option 1: Using a `visited` set**
 
-   * Initialize an empty set and start `node = head`.
-   * Traverse the list:
+* Initialize an empty set and start `node = head`.
+* Traverse the list:
 
-     1. If `node` is already in `visited`, a cycle exists → **return `True`**.
-     2. Otherwise, add `node` to `visited` and move to `node.next`.
-   * If you reach `None`, no cycle → **return `False`**.
+1. If `node` is already in `visited`, a cycle exists → **return `True`**.
+2. Otherwise, add `node` to `visited` and move to `node.next`.
+* If you reach `None`, no cycle → **return `False`**.
 
 2. **Option 2: Floyd’s Tortoise and Hare**
 
-   1. **Initialization**
+1. **Initialization**
 
       ```python
       slow = fast = head
       ```
-   2. **Traverse with two pointers**
+2. **Traverse with two pointers**
 
-      * While both `fast` and `fast.next` are not `None`:
+* While both `fast` and `fast.next` are not `None`:
 
-        * Move `slow` one step:
+* Move `slow` one step:
 
           ```python
           slow = slow.next
           ```
-        * Move `fast` two steps:
+* Move `fast` two steps:
 
           ```python
           fast = fast.next.next
           ```
-        * If at any point `slow == fast`, they’ve met inside a cycle → **return `True`**.
-   3. **No meeting point**
+* If at any point `slow == fast`, they’ve met inside a cycle → **return `True`**.
+3. **No meeting point**
 
-      * If the loop exits (i.e., `fast` or `fast.next` is `None`), the list terminates → **return `False`**.
-
----
+* If the loop exits (i.e., `fast` or `fast.next` is `None`), the list terminates → **return `False`**.
 
 ## Complexity
 

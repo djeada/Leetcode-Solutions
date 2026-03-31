@@ -11,7 +11,7 @@
 - `time_stamp: int`, a global counter incremented on each node visit.  
 - `bridge_edges: List[List[int]]`, the output list of all critical connections (bridges).  
 - `dfs_stack: List[Tuple[int, int, int]]`, an explicit stack for iterative DFS.  
-  - Each frame is `(node, parent, next_neighbor_index)`.
+- Each frame is `(node, parent, next_neighbor_index)`.
 
 ## What happens in `criticalConnections`
 
@@ -157,9 +157,9 @@ Running the algorithm yields `[[3,4],[1,3]]` (order may vary).
 ## Complexity
 
 - **Time:**  
-  - Building adjacency list: $O(N + E)$.  
-  - Each node is pushed and popped once; each edge is examined twice.  
-  - Overall $O(N + E)$.
+- Building adjacency list: $O(N + E)$.  
+- Each node is pushed and popped once; each edge is examined twice.  
+- Overall $O(N + E)$.
 
 - **Space:**  
-  - $O(N + E)$ for the adjacency list and $O(N)$ for the stacks and arrays.
+- $O(N + E)$ for the adjacency list and $O(N)$ for the stacks and arrays.

@@ -7,8 +7,6 @@
 - A string built by iterating through `s` after lowercasing it, keeping only alphanumeric characters.
 - This is the sanitized version of the input we actually check for palindrome properties.
 
----
-
 ## What happens in `isPalindrome`?
 
 We normalize the string by lowercasing and stripping non‑alphanumeric characters, then check whether the cleaned result reads the same forwards and backwards.
@@ -63,8 +61,6 @@ return clean_word == ''.join(reversed(clean_word))
 
 `reversed(clean_word)` produces the characters in reverse order; `''.join(...)` reassembles them into a string. If it matches `clean_word`, the input is a valid palindrome.
 
----
-
 ## Example
 
 ```python
@@ -92,8 +88,6 @@ clean_word:  "amanaplanacanalpanama"
 reversed:    "amanaplanacanalpanama"
              ✓ identical → return True
 ```
-
----
 
 ## Complexity
 

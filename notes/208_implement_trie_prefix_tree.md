@@ -1,8 +1,8 @@
 ## Data Structures
 
 - **`Node`**: A trie node containing:
-  - **`children: defaultdict(Node)`** — maps each character to its child `Node`. Using `defaultdict` auto-creates missing children on insertion.
-  - **`end: bool`** — `True` if this node marks the last character of a previously inserted word.
+- **`children: defaultdict(Node)`** — maps each character to its child `Node`. Using `defaultdict` auto-creates missing children on insertion.
+- **`end: bool`** — `True` if this node marks the last character of a previously inserted word.
 
 - **`self.root: Node`** — the root of the trie. It holds no character itself; all words branch from its `children`.
 
@@ -142,7 +142,7 @@ root
 ## Complexity
 
 - **Time:**
-  - `insert`: $O(L)$ where $L$ is the length of the word — one node visited or created per character.
-  - `search` / `startsWith`: $O(L)$ — one dictionary lookup per character.
+- `insert`: $O(L)$ where $L$ is the length of the word — one node visited or created per character.
+- `search` / `startsWith`: $O(L)$ — one dictionary lookup per character.
 
 - **Space:** $O(N \cdot C)$ where $N$ is the total number of characters across all inserted words and $C$ is the character set size (up to 26 for lowercase English). In the worst case with no shared prefixes, every character creates a new node.

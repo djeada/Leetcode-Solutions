@@ -26,8 +26,8 @@ We perform a **level-order (BFS) traversal** of both trees simultaneously, compa
 
     Pop a pair `(node_a, node_b)` from the front of the queue.
 
-    * If **both are `None`**, this branch matches—skip to the next pair.
-    * If **exactly one is `None`**, or their **values differ**, the trees are not the same—return `False`.
+* If **both are `None`**, this branch matches—skip to the next pair.
+* If **exactly one is `None`**, or their **values differ**, the trees are not the same—return `False`.
 
 3. **Enqueue children**
 
@@ -59,10 +59,10 @@ flowchart TD
 
 1. **`Start`**: Create the BFS queue with the initial pair `(p, q)`.
 2. **`Loop`**: While there are pairs to process:
-    * **`Pop`**: Dequeue the next pair `(node_a, node_b)`.
-    * **`BothNone`**: If both nodes are `None`, this subtree pair is trivially equal—`continue` to the next pair.
-    * **`Mismatch`**: If only one is `None`, or `node_a.val != node_b.val`, the trees diverge—return `False` immediately.
-    * **`Enqueue`**: Otherwise the nodes match. Push their left children as a pair and their right children as a pair.
+* **`Pop`**: Dequeue the next pair `(node_a, node_b)`.
+* **`BothNone`**: If both nodes are `None`, this subtree pair is trivially equal—`continue` to the next pair.
+* **`Mismatch`**: If only one is `None`, or `node_a.val != node_b.val`, the trees diverge—return `False` immediately.
+* **`Enqueue`**: Otherwise the nodes match. Push their left children as a pair and their right children as a pair.
 3. **`RetTrue`**: Queue exhausted with no mismatch found—the trees are identical.
 
 ## Complexity Analysis

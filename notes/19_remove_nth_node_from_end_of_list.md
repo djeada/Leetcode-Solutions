@@ -4,8 +4,8 @@
 
 * A node in a singly-linked list with attributes:
 
-  * **val**: the integer value stored in the node.
-  * **next**: a reference to the next `ListNode` (or **None**).
+* **val**: the integer value stored in the node.
+* **next**: a reference to the next `ListNode` (or **None**).
 
 **`head`**
 
@@ -19,10 +19,8 @@
 
 * Two pointers initialized to **tmp**:
 
-  * **fast** advances ahead to create an n-node gap.
-  * **slow** trails behind and will end up just before the node to remove.
-
----
+* **fast** advances ahead to create an n-node gap.
+* **slow** trails behind and will end up just before the node to remove.
 
 ## What happens in `removeNthFromEnd()`
 
@@ -48,7 +46,7 @@ flowchart TD
    slow = tmp
    ```
 
-   * Using a dummy simplifies removal when the head itself must be deleted.
+* Using a dummy simplifies removal when the head itself must be deleted.
 
 2. **Advance the fast pointer**
 
@@ -57,7 +55,7 @@ flowchart TD
        fast = fast.next
    ```
 
-   * Moves **fast** ahead by **n+1** nodes so that the gap between **fast** and **slow** is **n+1**.
+* Moves **fast** ahead by **n+1** nodes so that the gap between **fast** and **slow** is **n+1**.
 
 3. **Move both pointers together**
 
@@ -67,7 +65,7 @@ flowchart TD
        fast = fast.next
    ```
 
-   * When **fast** reaches the end (**None**), **slow** is positioned just before the node to remove (the nth from the end).
+* When **fast** reaches the end (**None**), **slow** is positioned just before the node to remove (the nth from the end).
 
 4. **Remove the nth node from end**
 
@@ -75,7 +73,7 @@ flowchart TD
    slow.next = slow.next.next
    ```
 
-   * Skips over the target node, unlinking it from the list.
+* Skips over the target node, unlinking it from the list.
 
 5. **Return new head**
 
@@ -83,17 +81,15 @@ flowchart TD
    return tmp.next
    ```
 
-   * **tmp.next** now points to the possibly updated head (in case the original head was removed).
-
----
+* **tmp.next** now points to the possibly updated head (in case the original head was removed).
 
 ## Complexity
 
 * **Time:** $O(L)$, where L is the length of the list.
 
-  * First loop advances **fast** by **n+1** steps: $O(n)$.
-  * Second loop moves both pointers until **fast** hits the end: up to $O(L-n)$.
+* First loop advances **fast** by **n+1** steps: $O(n)$.
+* Second loop moves both pointers until **fast** hits the end: up to $O(L-n)$.
 
 * **Space:** $O(1)$
 
-  * Only a constant number of pointers and a dummy node are used.
+* Only a constant number of pointers and a dummy node are used.

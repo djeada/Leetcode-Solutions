@@ -5,15 +5,13 @@
 
 **Auxiliary Variables:**  
 - `chars`: a list of the **compressed** characters from `s`, where consecutive duplicates have been collapsed.  
-  - This reduces runs like `"aaa"` to a single `"a"`.  
+- This reduces runs like `"aaa"` to a single `"a"`.  
 - `n`: integer, the length of `chars`.  
 - `min_prints`: an `n × n` 2D list, where  
   ```
   min_prints[i][j] = minimum number of printer turns needed
                      to print the substring chars[i..j].
   ```
-
----
 
 ## What happens in `strangePrinter(s)`?
 
@@ -71,8 +69,8 @@ For each `length` from `2` to `n`, for each `start` index:
    best = min_prints[start][end−1] + 1
    ```
 3. **Try merging**: for any `mid` in `[start..end−1]` with `chars[mid] == chars[end]`, we can extend the turn that prints at `mid` to also cover `end`.  
-   - Cost to handle `[start..mid]` remains `min_prints[start][mid]`.  
-   - The “gap” between `mid` and `end` is `[mid+1..end−1]`; if non‑empty, it costs `min_prints[mid+1][end−1]`, else `0`.  
+- Cost to handle `[start..mid]` remains `min_prints[start][mid]`.  
+- The “gap” between `mid` and `end` is `[mid+1..end−1]`; if non‑empty, it costs `min_prints[mid+1][end−1]`, else `0`.  
    ```python
    candidate = (
      min_prints[start][mid]
@@ -88,8 +86,6 @@ return min_prints[0][n−1]
 ```
 This is the minimum turns to print the entire compressed sequence.
 
----
-
 ## Example
 
 ```python
@@ -102,19 +98,17 @@ s = "aaabbb"
                  [0, 1]]
    ```
 3. **length = 2**, `start = 0`, `end = 1`:  
-   - Worst case: `min_prints[0][0] + 1 = 1 + 1 = 2`.  
-   - Try merge: `chars[0]='a' ≠ chars[1]='b'` → no improvement.  
+- Worst case: `min_prints[0][0] + 1 = 1 + 1 = 2`.  
+- Try merge: `chars[0]='a' ≠ chars[1]='b'` → no improvement.  
    → `min_prints[0][1] = 2`.
 4. **Answer** → `2`.  
    (We need one turn for all `a`’s, one for all `b`’s.)
 
----
-
 ## Complexity
 
 - **Time:**  
-  - Let `n = len(chars) ≤ len(s)`.  
-  - We fill an `n×n` DP table; for each cell we may scan up to `n` possible `mid` points → $O(n³)$.
+- Let `n = len(chars) ≤ len(s)`.  
+- We fill an `n×n` DP table; for each cell we may scan up to `n` possible `mid` points → $O(n³)$.
 
 - **Space:**  
-  - $O(n²)$ for the `min_prints` table, plus $O(n)$ for `chars`.
+- $O(n²)$ for the `min_prints` table, plus $O(n)$ for `chars`.

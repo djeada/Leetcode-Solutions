@@ -8,8 +8,6 @@
 - `profit_not_holding`: maximum profit achievable **so far** if **you do not** hold a share at the end of the current day.  
 - `profit_holding`: maximum profit achievable **so far** if **you do** hold a share at the end of the current day.
 
----
-
 ## What happens in `maxProfit`?
 
 We perform a **one‑pass dynamic programming** over the days, maintaining two states (`holding` vs. `not holding`) and updating them each day based on the possible transactions.
@@ -62,8 +60,6 @@ At the end of all days, you maximize profit by **not** holding any stock:
 return profit_not_holding
 ```
 
----
-
 ## Example
 
 ```python
@@ -82,11 +78,10 @@ fee    = 2
 
 **Answer:** 7
 
-
 ## Complexity
 
 - **Time:**  
-  - Single pass over `prices`: $O(n)$.
+- Single pass over `prices`: $O(n)$.
 
 - **Space:**  
-  - $O(1)$ extra space (just two state variables and temporaries).
+- $O(1)$ extra space (just two state variables and temporaries).

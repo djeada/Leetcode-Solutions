@@ -58,8 +58,8 @@ flowchart TD
     return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)
     ```
 
-    * **Left child**: its value must be less than the current node, so `high` is narrowed to `node.val`.
-    * **Right child**: its value must be greater than the current node, so `low` is narrowed to `node.val`.
+* **Left child**: its value must be less than the current node, so `high` is narrowed to `node.val`.
+* **Right child**: its value must be greater than the current node, so `low` is narrowed to `node.val`.
 
     Short-circuit evaluation via `and` skips the right subtree if the left already fails.
 

@@ -14,8 +14,6 @@
 
 * Integer tracking the overall maximum product seen so far.
 
----
-
 ## What happens in `maxProduct()`
 
 ```mermaid
@@ -42,7 +40,7 @@ flowchart TD
        return nums[0]
    ```
 
-   * If there is only one element, that element is the max product.
+* If there is only one element, that element is the max product.
 
 2. **Initialization**
 
@@ -52,7 +50,7 @@ flowchart TD
    result   = nums[0]
    ```
 
-   * All three start at the first element.
+* All three start at the first element.
 
 3. **Iterate through the rest**
 
@@ -60,7 +58,7 @@ flowchart TD
    for number in nums[1:]:
    ```
 
-   * For each new **number**, we want the maximum product of any subarray ending at that index.
+* For each new **number**, we want the maximum product of any subarray ending at that index.
 
 4. **Swap on negative**
 
@@ -69,7 +67,7 @@ flowchart TD
        curr_max, curr_min = curr_min, curr_max
    ```
 
-   * A negative flips signs, so the current minimum could become the maximum when multiplied by a negative.
+* A negative flips signs, so the current minimum could become the maximum when multiplied by a negative.
 
 5. **Update running max and min**
 
@@ -78,8 +76,8 @@ flowchart TD
    curr_min = min(number, curr_min * number)
    ```
 
-   * **curr\_max** becomes either the current number alone (start new subarray) or extend the previous max subarray.
-   * **curr\_min** similarly tracks the smallest product, which may become max later.
+* **curr\_max** becomes either the current number alone (start new subarray) or extend the previous max subarray.
+* **curr\_min** similarly tracks the smallest product, which may become max later.
 
 6. **Track global result**
 
@@ -87,7 +85,7 @@ flowchart TD
    result = max(result, curr_max)
    ```
 
-   * Compare the current running maximum to the best seen so far.
+* Compare the current running maximum to the best seen so far.
 
 7. **Return**
 
@@ -95,16 +93,14 @@ flowchart TD
    return result
    ```
 
-   * After scanning all numbers, **result** holds the maximum product of any contiguous subarray.
-
----
+* After scanning all numbers, **result** holds the maximum product of any contiguous subarray.
 
 ## Complexity
 
 * **Time:** $O(n)$, where n = length of **nums**.
 
-  * Single pass through the list.
+* Single pass through the list.
 
 * **Space:** $O(1)$
 
-  * Only a fixed number of variables are used.
+* Only a fixed number of variables are used.

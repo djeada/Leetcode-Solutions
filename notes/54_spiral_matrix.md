@@ -19,8 +19,6 @@ We repeatedly extract the current top row of the matrix, append its elements to 
 
 This transforms the two-dimensional spiral traversal into a sequence of simple row extractions and matrix rotations.
 
----
-
 ```mermaid
 flowchart LR
    A[While matrix is nonempty] 
@@ -36,16 +34,16 @@ flowchart LR
   Each extraction/removal of a row costs $O(n)$, and each rotation (transpose + reverse) costs $O(k\ell)$ for the current $\,k\times \ell$ submatrix.  Summed over all layers, this remains $O(mn)$.
 * **Space Complexity:**
 
-  * **Output:** $O(mn)$ to store the spiral order.
-  * **In-place matrix mutation:** no asymptotic extra space beyond the input and output lists.
+* **Output:** $O(mn)$ to store the spiral order.
+* **In-place matrix mutation:** no asymptotic extra space beyond the input and output lists.
 
 ## Source Code Analysis (Conceptual)
 
 1. **Initialize** an empty `result`.
 2. **Loop** as long as any rows remain:
 
-   * **Remove** and record the first row’s elements.
-   * **Reorient** the leftover matrix by transposing and reversing row order.
+* **Remove** and record the first row’s elements.
+* **Reorient** the leftover matrix by transposing and reversing row order.
 3. **Return** the concatenated `result`.
 
 This avoids manual index-boundary tracking by reducing the problem via matrix rotations rather than explicit pointer manipulation.

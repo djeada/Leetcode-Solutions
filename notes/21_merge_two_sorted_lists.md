@@ -4,8 +4,8 @@
 
 * A node in a singly-linked list with attributes:
 
-  * **val**: the integer value stored in the node.
-  * **next**: reference to the next `ListNode` (or **None**).
+* **val**: the integer value stored in the node.
+* **next**: reference to the next `ListNode` (or **None**).
 
 **`list1`, `list2`**
 
@@ -19,8 +19,6 @@
 
 * A pointer that always points to the last node in the merged list under construction.
 * Starts at **dummy** and advances as nodes are appended.
-
----
 
 ## What happens in mergeTwoLists()
 
@@ -46,8 +44,8 @@ flowchart TD
    tail = dummy
    ```
 
-   * `dummy.next` will ultimately point to the head of the merged list.
-   * `tail` tracks the end of the merged list as we build it.
+* `dummy.next` will ultimately point to the head of the merged list.
+* `tail` tracks the end of the merged list as we build it.
 
 2. **Merge by selecting smaller node**
 
@@ -62,11 +60,11 @@ flowchart TD
        tail = tail.next
    ```
 
-   * As long as both lists have nodes, compare their current values:
+* As long as both lists have nodes, compare their current values:
 
-     * Link the smaller (or equal) one to `tail.next`.
-     * Advance that list’s pointer.
-     * Move `tail` forward to the new last node.
+* Link the smaller (or equal) one to `tail.next`.
+* Advance that list’s pointer.
+* Move `tail` forward to the new last node.
 
 3. **Attach any remaining nodes**
 
@@ -74,7 +72,7 @@ flowchart TD
    tail.next = list1 if list1 else list2
    ```
 
-   * Whichever list still has nodes gets appended in one step.
+* Whichever list still has nodes gets appended in one step.
 
 4. **Return the merged list**
 
@@ -82,16 +80,14 @@ flowchart TD
    return dummy.next
    ```
 
-   * `dummy.next` is the head of the newly merged sorted list.
-
----
+* `dummy.next` is the head of the newly merged sorted list.
 
 ## Complexity
 
 * **Time:** $O(m + n)$, where m and n are the lengths of the two input lists.
 
-  * Each node from both lists is visited exactly once.
+* Each node from both lists is visited exactly once.
 
 * **Space:** $O(1)$
 
-  * Only constant extra space is used (the dummy node and pointers).
+* Only constant extra space is used (the dummy node and pointers).
