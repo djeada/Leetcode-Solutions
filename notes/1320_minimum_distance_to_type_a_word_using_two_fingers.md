@@ -99,8 +99,8 @@ Indeed, the DP returns **1**.
 
 - **Time:**  
   - Let `n = len(word)`, `K = 26` (number of keys).  
-  - For each of the `n` characters, we do a double loop over `(K+1)×(K+1)` states → O(n·K²).  
-  - Since `K` is constant (26 letters), this is effectively **O(n)**.
+  - For each of the `n` characters, we do a double loop over `(K+1)×(K+1)` states → $O(n \cdot K²)$.  
+  - Since `K` is constant (26 letters), this is effectively $O(n)$.
 
 - **Space:**  
-  - The DP table is size **(K+1)²**, i.e. **O(1)** with respect to `n` (constant auxiliary space).
+  - The DP table is size **(K+1)²**, i.e. $O(1)$ with respect to `n` (constant auxiliary space).

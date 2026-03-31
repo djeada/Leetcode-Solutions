@@ -4,7 +4,7 @@
   The input list of integers (unsorted).
 
 * **`num_set: Set[int]`**
-  A hash set containing all elements of `nums`, used for O(1) lookups.
+  A hash set containing all elements of `nums`, used for $O(1)$ lookups.
 
 * **`longest: int`**
   Tracks the length of the longest consecutive sequence found so far.
@@ -17,7 +17,7 @@
 
 ## Overall Approach
 
-We leverage a hash set to achieve an O(n)-time solution by only exploring sequences from their minimal starting point:
+We leverage a hash set to achieve an $O(n)$-time solution by only exploring sequences from their minimal starting point:
 
 1. **Build the set**
 
@@ -26,7 +26,7 @@ We leverage a hash set to achieve an O(n)-time solution by only exploring sequen
    longest = 0
    ```
 
-   Converting `nums` into `num_set` takes O(n) time and lets us test membership in O(1).
+   Converting `nums` into `num_set` takes $O(n)$ time and lets us test membership in $O(1)$.
 
 2. **Find sequence starts**
    Loop through each unique value `x` in `num_set`.
@@ -88,16 +88,16 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** \$O(n)\$
+* **Time:** $O(n)$
 
-  * Building `num_set` from `nums` costs \$O(n)\$.
+  * Building `num_set` from `nums` costs $O(n)$.
   * Each element is inserted once, and each is visited at most twice:
 
     1. Once when checking if it’s a “start” (`x - 1 not in num_set`),
     2. At most once while “walking” a run (every element in a run is checked by `while y in num_set`).
        Thus, overall linear in the number of input elements.
 
-* **Space:** \$O(n)\$
+* **Space:** $O(n)$
 
   * The `num_set` holds up to all elements of `nums`.
   * All other variables (`longest`, `x`, `y`) use constant extra space.

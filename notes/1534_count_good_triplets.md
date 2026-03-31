@@ -103,8 +103,8 @@ All triples `(i, j, k)` with `i<j<k` are:
 ## Complexity
 
 - **Time:**  
-  - We have three nested loops in the worst case → O(n³).  
+  - We have three nested loops in the worst case → $O(n³)$.  
   - The early `continue` after checking the first condition can prune some work but doesn’t change the cubic worst‑case.
 
 - **Space:**  
-  - **O(1)** extra space (only counters and loop indices).  
+  - $O(1)$ extra space (only counters and loop indices).  

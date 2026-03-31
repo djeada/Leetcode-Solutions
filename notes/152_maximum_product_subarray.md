@@ -101,10 +101,10 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(n), where n = length of **nums**.
+* **Time:** $O(n)$, where n = length of **nums**.
 
   * Single pass through the list.
 
-* **Space:** O(1)
+* **Space:** $O(1)$
 
   * Only a fixed number of variables are used.

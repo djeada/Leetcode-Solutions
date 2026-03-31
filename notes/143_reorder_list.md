@@ -109,12 +109,12 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(n)
+* **Time:** $O(n)$
 
-  * Finding midpoint: O(n)
-  * Reversing second half: O(n/2)
-  * Merging halves: O(n)
+  * Finding midpoint: $O(n)$
+  * Reversing second half: $O(n/2)$
+  * Merging halves: $O(n)$
 
-* **Space:** O(1)
+* **Space:** $O(1)$
 
   * All operations are done in-place with a fixed number of pointers.

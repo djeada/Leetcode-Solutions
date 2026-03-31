@@ -32,8 +32,8 @@ flowchart TD
 
 ## Complexity Analysis
 
-* **Time Complexity**: `O(n)`, where `n` is the number of nodes in the tree.
-* **Space Complexity**: `O(w)`, where `w` is the maximum width of the tree. In the worst case, this is `O(n)`.
+* **Time Complexity**: $O(n)$, where `n` is the number of nodes in the tree.
+* **Space Complexity**: $O(w)$, where `w` is the maximum width of the tree. In the worst case, this is $O(n)$.
 
 ## Key Insights
 

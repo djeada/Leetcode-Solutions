@@ -62,5 +62,5 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(n), where n is the length of **s**. Each character is looked at exactly once.
-* **Space:** O(n) in the worst case, since all characters could be opening brackets and pushed onto **stack**.
+* **Time:** $O(n)$, where n is the length of **s**. Each character is looked at exactly once.
+* **Space:** $O(n)$ in the worst case, since all characters could be opening brackets and pushed onto **stack**.

@@ -88,10 +88,10 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(m + n), where m and n are the lengths of the two input lists.
+* **Time:** $O(m + n)$, where m and n are the lengths of the two input lists.
 
   * Each node from both lists is visited exactly once.
 
-* **Space:** O(1)
+* **Space:** $O(1)$
 
   * Only constant extra space is used (the dummy node and pointers).

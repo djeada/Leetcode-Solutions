@@ -112,9 +112,9 @@ prereq_pairs = [[1,0], [2,0], [3,1], [3,2]]
 ## Complexity
 
 - **Time:**  
-  - Building adjacency list and in‑degree: **O(N + P)** where `P = len(prereq_pairs)`.  
+  - Building adjacency list and in‑degree: $O(N + P)$ where `P = len(prereq_pairs)`.  
   - Each course is enqueued/dequeued once, and each edge is considered exactly once.  
-  - **Overall:** O(N + P).
+  - **Overall:** $O(N + P)$.
 
 - **Space:**  
-  - **O(N + P)** for the adjacency list and in-degree array, plus **O(N)** for the queue and output list.
+  - $O(N + P)$ for the adjacency list and in-degree array, plus $O(N)$ for the queue and output list.

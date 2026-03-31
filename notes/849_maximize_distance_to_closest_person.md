@@ -108,10 +108,10 @@ The best seat is in the middle of the first gap (at index 2), giving a distance 
 
 **Time:**  
 
-- Finding `first_one` and `last_one`: each `O(n)` in the worst case.  
-- Single pass to compute `max_distance`: `O(n)`.  
-- Overall: **O(n)**.
+- Finding `first_one` and `last_one`: each $O(n)$ in the worst case.  
+- Single pass to compute `max_distance`: $O(n)$.  
+- Overall: $O(n)$.
 
 **Space:**
 
-- **O(1)** extra space (all counters and indices).
+- $O(1)$ extra space (all counters and indices).

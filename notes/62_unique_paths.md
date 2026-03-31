@@ -26,7 +26,7 @@ $$
 We have two mathematically equivalent strategies:
 
 1. **Combinatorial**
-Count all sequences of $(m−1)$ downs and $(n−1)$ rights:
+Count all sequences of $(m-1)$ downs and $(n-1)$ rights:
 
 $$
 \binom{N}{k}

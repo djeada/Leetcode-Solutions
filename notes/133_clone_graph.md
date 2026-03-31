@@ -9,9 +9,9 @@
 
 ## Why DFS (recursive) is optimal here
 
-1. **O(N+E) time & O(N) space**  
+1. **$O(N+E)$ time & $O(N)$ space**  
    - Every node is visited exactly once, and every edge is traversed exactly once.  
-   - The cloning map and the recursion stack together use O(N) extra space.  
+   - The cloning map and the recursion stack together use $O(N)$ extra space.  
 
 2. **Lower overhead than BFS**  
    - No `deque` operations—just direct recursive calls.  

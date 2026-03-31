@@ -56,5 +56,5 @@ flowchart TD
 
 ## Complexity
 
-- **Time:** O(n log n), dominated by the sort. The single pass through intervals is O(n).  
-- **Space:** O(n) for the `merged` output list in the worst case (no overlaps).
+- **Time:** $O(n \log n)$, dominated by the sort. The single pass through intervals is $O(n)$.  
+- **Space:** $O(n)$ for the `merged` output list in the worst case (no overlaps).

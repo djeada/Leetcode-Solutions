@@ -114,7 +114,7 @@ s = "aaabbb"
 
 - **Time:**  
   - Let `n = len(chars) ≤ len(s)`.  
-  - We fill an `n×n` DP table; for each cell we may scan up to `n` possible `mid` points → **O(n³)**.
+  - We fill an `n×n` DP table; for each cell we may scan up to `n` possible `mid` points → $O(n³)$.
 
 - **Space:**  
-  - **O(n²)** for the `min_prints` table, plus **O(n)** for `chars`.
+  - $O(n²)$ for the `min_prints` table, plus $O(n)$ for `chars`.

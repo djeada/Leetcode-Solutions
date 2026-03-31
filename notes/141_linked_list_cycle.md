@@ -85,5 +85,5 @@ flowchart TD
 
 | Approach         | Time Complexity | Space Complexity |
 | ---------------- | --------------- | ---------------- |
-| **Visited Set**  | O(n)            | O(n)             |
-| **Two Pointers** | O(n)            | O(1)             |
+| **Visited Set**  | $O(n)$            | $O(n)$             |
+| **Two Pointers** | $O(n)$            | $O(1)$             |

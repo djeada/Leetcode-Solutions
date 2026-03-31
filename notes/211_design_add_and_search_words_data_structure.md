@@ -95,9 +95,9 @@ flowchart TD
 ## Complexity
 
 - **Time:**
-  - `addWord`: **O(L)** where L is the length of the word. Each character requires one trie traversal step.
-  - `search` (no wildcards): **O(L)** — a single path through the trie.
-  - `search` (with wildcards): **O(N)** in the worst case, where N is the total number of nodes in the trie. A pattern of all `'.'` characters can visit every node. For a fully populated trie this becomes O(26^L).
+  - `addWord`: $O(L)$ where L is the length of the word. Each character requires one trie traversal step.
+  - `search` (no wildcards): $O(L)$ — a single path through the trie.
+  - `search` (with wildcards): $O(N)$ in the worst case, where N is the total number of nodes in the trie. A pattern of all `'.'` characters can visit every node. For a fully populated trie this becomes $O(26^L)$.
 
 - **Space:**
-  - **O(T)** where T is the total number of characters across all stored words. Each character occupies at most one trie node. The DFS recursion stack uses at most O(L) additional space per search call.
+  - $O(T)$ where T is the total number of characters across all stored words. Each character occupies at most one trie node. The DFS recursion stack uses at most $O(L)$ additional space per search call.

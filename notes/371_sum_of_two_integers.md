@@ -30,8 +30,8 @@ flowchart TD
 
 ## Complexity Analysis
 
-* **Time Complexity**: `O(1)` for 32-bit integers, since the loop can only propagate carries across a fixed number of bits.
-* **Space Complexity**: `O(1)`.
+* **Time Complexity**: $O(1)$ for 32-bit integers, since the loop can only propagate carries across a fixed number of bits.
+* **Space Complexity**: $O(1)$.
 
 ## Key Insights
 

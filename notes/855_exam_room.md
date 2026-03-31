@@ -7,7 +7,7 @@ An integer `n`, the number of seats indexed from `0` to `n‑1`.
 
 - Instead of tracking all the seats, we just track the **occupied** seats.
 - A **sorted list** of integers, each is an index of a seat that’s currently taken.
-- We keep it sorted so that we can quickly scan adjacent occupied seats to find gaps, and remove a leaving student in O(log k + k) time (with `bisect`).
+- We keep it sorted so that we can quickly scan adjacent occupied seats to find gaps, and remove a leaving student in $O(\log k + k)$ time (with `bisect`).
 
 ## What happens in seat()?
 

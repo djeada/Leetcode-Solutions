@@ -101,8 +101,8 @@ If there were a cycle (e.g. add `[0,3]`), no topological order would cover all c
 ## Complexity
 
 - **Time:**  
-  - Building adjacency list and in‑degree: **O(N + P)** where `P = len(prerequisites)`.  
-  - Each course is enqueued and dequeued at most once, and each prerequisite edge is examined exactly once → **O(N + P)** overall.
+  - Building adjacency list and in‑degree: $O(N + P)$ where `P = len(prerequisites)`.  
+  - Each course is enqueued and dequeued at most once, and each prerequisite edge is examined exactly once → $O(N + P)$ overall.
 
 - **Space:**  
-  - **O(N + P)** for the adjacency list and in‑degree array, plus **O(N)** for the queue.
+  - $O(N + P)$ for the adjacency list and in‑degree array, plus $O(N)$ for the queue.

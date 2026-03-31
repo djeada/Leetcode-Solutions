@@ -80,10 +80,10 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** O(log n)
+* **Time:** $O(\log n)$
 
   * Each iteration halves the search interval.
 
-* **Space:** O(1)
+* **Space:** $O(1)$
 
   * Only a fixed number of index variables are used.

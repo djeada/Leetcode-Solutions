@@ -18,7 +18,7 @@
 
 ## Overall Approach
 
-We use a **sliding‐window** technique with two pointers (`left` and `right`) plus the `char_index` map to enforce uniqueness in O(n) time. At each step, we expand the window by moving `right` and check if the newly included character has already appeared inside the current window. If it has, we advance `left` just past the previous occurrence to remove the duplicate. We update `max_len` whenever we have a longer duplicate‐free window.
+We use a **sliding‐window** technique with two pointers (`left` and `right`) plus the `char_index` map to enforce uniqueness in $O(n)$ time. At each step, we expand the window by moving `right` and check if the newly included character has already appeared inside the current window. If it has, we advance `left` just past the previous occurrence to remove the duplicate. We update `max_len` whenever we have a longer duplicate‐free window.
 
 1. **Initialization**
 
@@ -102,13 +102,13 @@ flowchart TD
 
 ## Complexity
 
-* **Time:** \$O(n)\$
+* **Time:** $O(n)$
 
-  * We make a single pass through the string of length \$n\$.
-  * Each character is processed once as `right` advances, and dictionary lookups/inserts (`char_index[...]`) take amortized \$O(1)\$.
+  * We make a single pass through the string of length $n$.
+  * Each character is processed once as `right` advances, and dictionary lookups/inserts (`char_index[...]`) take amortized $O(1)$.
   * The `left` pointer only ever moves forward (never back), so each character’s index is examined at most twice: once for reading, once for removing past duplicates.
 
-* **Space:** \$O(\min(n, k))\$
+* **Space:** $O(\min(n, k))$
 
   * The dictionary `char_index` holds at most one entry per unique character in the current window.
-  * In the worst case (all characters distinct), space is \$O(n)\$. If the character set is limited (e.g., ASCII), it’s \$O(k)\$ for that fixed alphabet size.
+  * In the worst case (all characters distinct), space is $O(n)$. If the character set is limited (e.g., ASCII), it’s $O(k)$ for that fixed alphabet size.

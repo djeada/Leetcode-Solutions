@@ -141,10 +141,10 @@ profit    = [20,20,100,200]
 ## Complexity
 
 - **Time:**  
-  - Sorting jobs: O(n log n).  
-  - Building `sorted_end_times`: O(n).  
-  - DP loop: n iterations, each doing a binary search O(log n) → O(n log n).  
-  - **Overall:** O(n log n).
+  - Sorting jobs: $O(n \log n)$.  
+  - Building `sorted_end_times`: $O(n)$.  
+  - DP loop: n iterations, each doing a binary search $O(\log n)$ → $O(n \log n)$.  
+  - **Overall:** $O(n \log n)$.
 
 - **Space:**  
-  - O(n) for `jobs_sorted`, `sorted_end_times`, and `max_profit`.
+  - $O(n)$ for `jobs_sorted`, `sorted_end_times`, and `max_profit`.
